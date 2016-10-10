@@ -19,14 +19,13 @@
                 <ul class="treeview-menu">
                     <li><a href="javascript:void(0);"><i class="fa fa-hand-o-right"></i> <span>References</span><i class="fa fa-angle-left pull-right"></i></a>
                       <ul class="treeview-menu">
-                          <li><a href="javascript:void(0);" onclick="loader('panel','category');"><i class="fa fa-cog"></i> <span>Category Setup</span></a></li>
-                          <li><a href="javascript:void(0);" onclick="loader('panel','condition');"><i class="fa fa-cog"></i> <span>Condition Setup</span></a></li>
-                          <li><a href="javascript:void(0);" onclick="loader('panel','shift');"><i class="fa fa-cog"></i> <span>Shift Setup</span></a></li>
+                          <li><a href="javascript:void(0);" onclick="loader('category','index');"><i class="fa fa-cog"></i> <span>Category Setup</span></a></li>
+                          <li><a href="javascript:void(0);" onclick="loader('condition','index');"><i class="fa fa-cog"></i> <span>Condition Setup</span></a></li>
                       </ul>
                     </li>
-                    <li><a href="javascript:void(0);" onclick="loader('panel','users');"><i class="fa fa-hand-o-right"></i> <span>Users Setup</span></a></li>
-                    <li><a href="javascript:void(0);" onclick="loader('panel','assets');"><i class="fa fa-hand-o-right"></i> <span>Assets Setup</span></a></li>
-                    <li><a href="javascript:void(0);" onclick="loader('panel','employees');"><i class="fa fa-hand-o-right"></i> <span>Employees Setup</span></a></li>
+                    <li><a href="javascript:void(0);" onclick="loader('user','index');"><i class="fa fa-hand-o-right"></i> <span>Users Setup</span></a></li>
+                    <li><a href="javascript:void(0);" onclick="loader('asset','index');"><i class="fa fa-hand-o-right"></i> <span>Assets Setup</span></a></li>
+                    <li><a href="javascript:void(0);" onclick="loader('employee','index');"><i class="fa fa-hand-o-right"></i> <span>Employees Setup</span></a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -36,6 +35,8 @@
                         <li><a href="javascript:void(0);" onclick="loader('panel','employee_table');"><i class="fa fa-table"></i>Employee Table</a></li>
                         <li><a href="javascript:void(0);" onclick="loader('panel','release');"><i class="fa fa-hand-o-right"></i>Release Page</a></li>
                         <li><a href="javascript:void(0);" onclick="loader('panel','history');"><i class="fa fa-hand-o-right"></i>History Page</a></li>
+                        <li><a href="javascript:void(0);" onclick="loader('person','index');"><i class="fa fa-hand-o-right"></i>Person Page</a></li>
+                        <li><a href="javascript:void(0);" onclick="loader('employee','index');"><i class="fa fa-hand-o-right"></i>Employee Page</a></li>
                     </ul>
             </li>
         </ul>

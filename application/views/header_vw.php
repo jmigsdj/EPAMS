@@ -45,6 +45,12 @@
 		<script src="<?=base_url()?>media/js/moment.js"></script>
 		<link rel="stylesheet" href="<?=base_url()?>media/css/bootstrap-datetimepicker.css" />
 		<script src="<?=base_url()?>media/js/bootstrap-datetimepicker.js"></script>
+		<!-- Datatables -->
+    <link href="<?php echo base_url('assets/datatables/css/dataTables.bootstrap.css')?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')?>" rel="stylesheet">
+    <script src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js')?>"></script>
+    <script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.js')?>"></script>
+    <script src="<?php echo base_url('assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js')?>"></script>
 
 
 		<!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -133,7 +139,7 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="<?=base_url()?>media/img/no_image_found.png" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs"><b>Username</b></span>
+                  <span class="hidden-xs"><b>Hello</b></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->

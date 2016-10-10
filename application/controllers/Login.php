@@ -24,7 +24,8 @@ class Login extends MY_Controller {
 			if(count($user)==1){
 				$has_error = 1;
 				$newdata = array(
-								 'user_id'=>$user[0]['user_id']);
+								 'id'=>$user[0]['id'],
+							 );
 				$this->load->library('session');
 				$this->session->set_userdata($newdata);
 			}

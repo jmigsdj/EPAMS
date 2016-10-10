@@ -11,8 +11,7 @@ class Login_model extends MY_Model {
 		//selecting all data
 		$this->db->where('username',$user);
 		$this->db->where('password',md5($pass));
-		$this->db->join('usertype ut', 'u.user_type = ut.usertype_id', 'LEFT');
-
+		// $this->db->join('usertypes ut', 'u.usertype_id = ut.id', 'LEFT');
 
 		$fetch = $this->db->get("users u");
 
