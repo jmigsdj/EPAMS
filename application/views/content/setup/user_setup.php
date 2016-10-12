@@ -215,10 +215,22 @@ function delete_user(id)
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-md-3">Username</label>
+                            <label class="control-label col-md-3">Password</label>
                             <div class="col-md-9">
-                                <input name="password" placeholder="Username" class="form-control" type="password">
+                                <input name="password" placeholder="Password" class="form-control" type="password">
                                 <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sel1" class="control-label col-md-3">Usertype</label>
+                            <div class="col-md-9">
+                                <select class="form-control" id="sel1" name="usertype">
+                                  <option>1</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                </select>
                             </div>
                         </div>
                     </div>

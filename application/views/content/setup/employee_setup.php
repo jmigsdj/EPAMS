@@ -13,6 +13,7 @@
                 <th>Employee ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
+                <th>Shift</th>
                 <th style="width:125px;">Action</th>
             </tr>
         </thead>

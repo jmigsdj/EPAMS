@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Employee_model extends CI_Model {
 
 	var $table = 'employees';
-	var $column_order = array('empId','firstname','lastname',null); //set column field database for datatable orderable
+	var $column_order = array('empId','firstname','lastname', 'shift_id', null); //set column field database for datatable orderable
 	var $column_search = array('empId','firstname','lastname'); //set column field database for datatable searchable just firstname , lastname , address are searchable
 	var $order = array('id' => 'desc'); // default order
 
@@ -17,7 +17,7 @@ class Employee_model extends CI_Model {
 	private function _get_datatables_query()
 	{
 
-		$this->db->from($this->table);
+		$this->db->from($this->table)->join('shifts', 'employees.shift_id = shifts.id', 'inner');
 
 		$i = 0;
 
@@ -48,8 +48,7 @@ class Employee_model extends CI_Model {
 		}
 		else if(isset($this->order))
 		{
-			$order = $this->order;
-			$this->db->order_by(key($order), $order[key($order)]);
+			$this->db->order_by('employees.id', 'ASC');
 		}
 	}
 

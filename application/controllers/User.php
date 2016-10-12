@@ -24,11 +24,12 @@ class User extends CI_Controller {
             $no++;
             $row = array();
             $row[] = $user->username;
+            $row[] = $user->usertype;
 
 
             //add html for action
             $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
-                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
 
             $data[] = $row;
         }
@@ -49,7 +50,8 @@ class User extends CI_Controller {
         $this->_validate();
         $data = array(
                 'username' => $this->input->post('username'),
-                'password' => $this->input->post(md5('password')),
+                'password' => $this->input->post('password'),
+                'usertype_id' => $this->input->post('usertype'),
 
             );
         $insert = $this->user->save($data);

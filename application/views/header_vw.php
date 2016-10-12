@@ -6,6 +6,7 @@
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="shortcut icon" href="<?=base_url()?>media/img/eplogo.ico" />
+		<title>Elevated Play Asset Management System</title>
 		<script>
 			document.onreadystatechange = function () {
 			  var state = document.readyState

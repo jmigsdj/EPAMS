@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class User_model extends CI_Model {
 
     var $table = 'users';
-    var $column_order = array('username', null); //set column field database for datatable orderable
+    var $column_order = array('username', 'usertype_id', null); //set column field database for datatable orderable
     var $column_search = array('username'); //set column field database for datatable searchable just firstname , lastname , address are searchable
     var $order = array('id' => 'desc'); // default order
 
@@ -17,7 +17,7 @@ class User_model extends CI_Model {
     private function _get_datatables_query()
     {
 
-        $this->db->from($this->table);
+        $this->db->from($this->table)->join('usertypes', 'users.usertype_id = usertypes.id', 'inner');
 
         $i = 0;
 
@@ -48,8 +48,7 @@ class User_model extends CI_Model {
         }
         else if(isset($this->order))
         {
-            $order = $this->order;
-            $this->db->order_by(key($order), $order[key($order)]);
+            $this->db->order_by('users.id', 'ASC');
         }
     }
 
@@ -88,6 +87,7 @@ class User_model extends CI_Model {
 
     public function save($data)
     {
+        $this->db->join('usertypes', 'users.usertype_id = usertypes.id', 'inner');
         $this->db->insert($this->table, $data);
         return $this->db->insert_id();
     }
