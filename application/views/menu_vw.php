@@ -35,8 +35,6 @@
                         <li><a href="javascript:void(0);" onclick="loader('panel','employee_table');"><i class="fa fa-table"></i>Employee Table</a></li>
                         <li><a href="javascript:void(0);" onclick="loader('panel','release');"><i class="fa fa-hand-o-right"></i>Release Page</a></li>
                         <li><a href="javascript:void(0);" onclick="loader('panel','history');"><i class="fa fa-hand-o-right"></i>History Page</a></li>
-                        <li><a href="javascript:void(0);" onclick="loader('person','index');"><i class="fa fa-hand-o-right"></i>Person Page</a></li>
-                        <li><a href="javascript:void(0);" onclick="loader('employee','index');"><i class="fa fa-hand-o-right"></i>Employee Page</a></li>
                     </ul>
             </li>
         </ul>

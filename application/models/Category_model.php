@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Category_model extends CI_Model {
 
     var $table = 'category';
-    var $column_order = array('name',null); //set column field database for datatable orderable
-    var $column_search = array('name'); //set column field database for datatable searchable just firstname , lastname , address are searchable
+    var $column_order = array('categName',null); //set column field database for datatable orderable
+    var $column_search = array('categName'); //set column field database for datatable searchable just firstname , lastname , address are searchable
     var $order = array('id' => 'desc'); // default order
 
     public function __construct()

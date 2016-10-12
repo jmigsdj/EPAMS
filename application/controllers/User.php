@@ -44,13 +44,19 @@ class User extends CI_Controller {
         echo json_encode($output);
     }
 
+    public function ajax_edit($id)
+  	{
+  		$data = $this->user->get_by_id($id);
+  		//$data->dob = ($data->dob == '0000-00-00') ? '' : $data->dob; // if 0000-00-00 set tu empty for datepicker compatibility
+  		echo json_encode($data);
+  	}
 
     public function ajax_add()
     {
         $this->_validate();
         $data = array(
                 'username' => $this->input->post('username'),
-                'password' => $this->input->post('password'),
+                'password' => md5($this->input->post('password')),
                 'usertype_id' => $this->input->post('usertype'),
 
             );
@@ -62,8 +68,7 @@ class User extends CI_Controller {
     {
         $this->_validate();
         $data = array(
-                'username' => $this->input->post('username')
-
+                'username' => $this->input->post('username'),
             );
         $this->user->update(array('id' => $this->input->post('id')), $data);
         echo json_encode(array("status" => TRUE));
@@ -94,6 +99,13 @@ class User extends CI_Controller {
         {
             $data['inputerror'][] = 'password';
             $data['error_string'][] = 'Password is required';
+            $data['status'] = FALSE;
+        }
+
+        if($this->input->post('usertype') == '----')
+        {
+            $data['inputerror'][] = 'usertype';
+            $data['error_string'][] = 'Usertype is required';
             $data['status'] = FALSE;
         }
 

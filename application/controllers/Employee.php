@@ -40,7 +40,7 @@ class Employee extends CI_Controller {
 			$no++;
 			$row = array();
 
-      		$row[] = $employee->empId;
+      $row[] = $employee->empId;
 			$row[] = $employee->firstName;
 			$row[] = $employee->lastName;
 			$row[] = $employee->shiftName;
@@ -65,7 +65,7 @@ class Employee extends CI_Controller {
 	public function ajax_edit($id)
 	{
 		$data = $this->employee->get_by_id($id);
-		$data->dob = ($data->dob == '0000-00-00') ? '' : $data->dob; // if 0000-00-00 set tu empty for datepicker compatibility
+		//$data->dob = ($data->dob == '0000-00-00') ? '' : $data->dob; // if 0000-00-00 set tu empty for datepicker compatibility
 		echo json_encode($data);
 	}
 
@@ -76,6 +76,7 @@ class Employee extends CI_Controller {
       'empId' => $this->input->post('empId'),
       'firstName' => $this->input->post('firstName'),
       'lastName' => $this->input->post('lastName'),
+			'shift_id' => $this->input->post('shiftName'),
 			);
 		$insert = $this->employee->save($data);
 		echo json_encode(array("status" => TRUE));
@@ -88,6 +89,7 @@ class Employee extends CI_Controller {
         'empId' => $this->input->post('empId'),
 				'firstName' => $this->input->post('firstName'),
 				'lastName' => $this->input->post('lastName'),
+				'shift_id' => $this->input->post('shiftName'),
 			);
 		$this->employee->update(array('id' => $this->input->post('id')), $data);
 		echo json_encode(array("status" => TRUE));
@@ -125,6 +127,13 @@ class Employee extends CI_Controller {
 		{
 			$data['inputerror'][] = 'lastName';
 			$data['error_string'][] = 'Last name is required';
+			$data['status'] = FALSE;
+		}
+
+		if($this->input->post('shiftName') == '----')
+		{
+			$data['inputerror'][] = 'shiftName';
+			$data['error_string'][] = 'Shift is required';
 			$data['status'] = FALSE;
 		}
 

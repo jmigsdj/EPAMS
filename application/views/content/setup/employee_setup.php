@@ -243,6 +243,18 @@ if(confirm('Are you sure delete this data?'))
                             <span class="help-block"></span>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="sel1" class="control-label col-md-3">Shift</label>
+                        <div class="col-md-9">
+                            <select class="form-control" id="sel1" name="shiftName">
+                              <option>----</option>
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                            </select>
+                      </div>
+                    </div>
                 </div>
             </form>
         </div>

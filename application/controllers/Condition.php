@@ -23,12 +23,12 @@ class Condition extends CI_Controller {
         foreach ($list as $condition) {
             $no++;
             $row = array();
-            $row[] = $condition->name;
+            $row[] = $condition->condition;
 
 
             //add html for action
             $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_condition('."'".$condition->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
-                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_condition('."'".$condition->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_condition('."'".$condition->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
 
             $data[] = $row;
         }
@@ -43,12 +43,19 @@ class Condition extends CI_Controller {
         echo json_encode($output);
     }
 
+    public function ajax_edit($id)
+  	{
+  		$data = $this->condition->get_by_id($id);
+  		//$data->dob = ($data->dob == '0000-00-00') ? '' : $data->dob; // if 0000-00-00 set tu empty for datepicker compatibility
+  		echo json_encode($data);
+  	}
+
 
     public function ajax_add()
     {
         $this->_validate();
         $data = array(
-                'name' => $this->input->post('name')
+                'condition' => $this->input->post('condition')
 
             );
         $insert = $this->condition->save($data);
@@ -59,7 +66,7 @@ class Condition extends CI_Controller {
     {
         $this->_validate();
         $data = array(
-                'name' => $this->input->post('name')
+                'condition' => $this->input->post('condition')
 
             );
         $this->condition->update(array('id' => $this->input->post('id')), $data);
@@ -80,10 +87,10 @@ class Condition extends CI_Controller {
         $data['inputerror'] = array();
         $data['status'] = TRUE;
 
-        if($this->input->post('name') == '')
+        if($this->input->post('condition') == '')
         {
-            $data['inputerror'][] = 'name';
-            $data['error_string'][] = 'First name is required';
+            $data['inputerror'][] = 'condition';
+            $data['error_string'][] = 'Condition is required';
             $data['status'] = FALSE;
         }
 

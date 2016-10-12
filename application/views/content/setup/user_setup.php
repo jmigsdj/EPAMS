@@ -101,7 +101,7 @@ function edit_user(id)
         {
 
             $('[name="id"]').val(data.id);
-            $('[name="name"]').val(data.name);
+            $('[name="username"]').val(data.username);
 
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit User'); // Set title to Bootstrap modal title
@@ -229,7 +229,6 @@ function delete_user(id)
                                   <option>1</option>
                                   <option>2</option>
                                   <option>3</option>
-                                  <option>4</option>
                                 </select>
                             </div>
                         </div>

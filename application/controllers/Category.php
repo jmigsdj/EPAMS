@@ -23,12 +23,12 @@ class Category extends CI_Controller {
         foreach ($list as $category) {
             $no++;
             $row = array();
-            $row[] = $category->name;
+            $row[] = $category->categName;
 
 
             //add html for action
             $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_category('."'".$category->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
-                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_category('."'".$category->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_category('."'".$category->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
 
             $data[] = $row;
         }
@@ -43,12 +43,18 @@ class Category extends CI_Controller {
         echo json_encode($output);
     }
 
+    public function ajax_edit($id)
+  	{
+  		$data = $this->category->get_by_id($id);
+  		//$data->dob = ($data->dob == '0000-00-00') ? '' : $data->dob; // if 0000-00-00 set tu empty for datepicker compatibility
+  		echo json_encode($data);
+  	}
 
     public function ajax_add()
     {
         $this->_validate();
         $data = array(
-                'name' => $this->input->post('name')
+                'categName' => $this->input->post('categName')
 
             );
         $insert = $this->category->save($data);
@@ -59,7 +65,7 @@ class Category extends CI_Controller {
     {
         $this->_validate();
         $data = array(
-                'name' => $this->input->post('name')
+                'categName' => $this->input->post('categName')
 
             );
         $this->category->update(array('id' => $this->input->post('id')), $data);
@@ -80,9 +86,9 @@ class Category extends CI_Controller {
         $data['inputerror'] = array();
         $data['status'] = TRUE;
 
-        if($this->input->post('name') == '')
+        if($this->input->post('categName') == '')
         {
-            $data['inputerror'][] = 'name';
+            $data['inputerror'][] = 'categName';
             $data['error_string'][] = 'Category is required';
             $data['status'] = FALSE;
         }

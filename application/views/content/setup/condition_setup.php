@@ -100,7 +100,7 @@ function edit_condition(id)
         {
 
             $('[name="id"]').val(data.id);
-            $('[name="name"]').val(data.name);
+            $('[name="condition"]').val(data.condition);
 
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit Condition'); // Set title to Bootstrap modal title
@@ -208,7 +208,7 @@ function delete_condition(id)
                         <div class="form-group">
                             <label class="control-label col-md-3">Condition Name</label>
                             <div class="col-md-9">
-                                <input name="name" placeholder="Condition" class="form-control" type="text">
+                                <input name="condition" placeholder="Condition" class="form-control" type="text">
                                 <span class="help-block"></span>
                             </div>
                         </div>

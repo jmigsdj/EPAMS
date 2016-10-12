@@ -85,12 +85,14 @@ class Employee_model extends CI_Model {
 
 	public function save($data)
 	{
+		$this->db->join('shifts', 'employees.shift_id = shifts.id', 'inner');
 		$this->db->insert($this->table, $data);
 		return $this->db->insert_id();
 	}
 
 	public function update($where, $data)
 	{
+		$this->db->join('shifts', 'employees.shift_id = shifts.id', 'inner');
 		$this->db->update($this->table, $data, $where);
 		return $this->db->affected_rows();
 	}
