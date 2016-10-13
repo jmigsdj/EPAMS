@@ -13,7 +13,7 @@ class Login_model extends MY_Model {
 		$this->db->where('password',md5($pass));
 		// $this->db->join('usertypes ut', 'u.usertype_id = ut.id', 'LEFT');
 
-		$fetch = $this->db->get("users u");
+		$fetch = $this->db->get("users");
 
 		//print_r($this->db->last_query());
 		$row = $fetch->result_array();

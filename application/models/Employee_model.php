@@ -17,7 +17,7 @@ class Employee_model extends CI_Model {
 	private function _get_datatables_query()
 	{
 
-		$this->db->from($this->table)->join('shifts', 'employees.shift_id = shifts.id', 'inner');
+		$this->db->from($this->table)->join('shifts', 'employees.shift = shifts.shift_id', 'inner');
 
 		$i = 0;
 

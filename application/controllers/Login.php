@@ -20,12 +20,17 @@ class Login extends MY_Controller {
 		$username = $this->input->post("uname",true);
 		$password = $this->input->post("pname",true);
 		$user=$this->login_model->login_validation($username,$password);
+
 		//session
-			if(count($user)==1){
+
+			if(count($user)==1){  //if there is user logged in
 				$has_error = 1;
+
 				$newdata = array(
-								 'id'=>$user[0]['id'],
-							 );
+					'id'=>$user[0]['id'],
+					'utype'=>$user[0]['usertype_id']
+				);
+
 				$this->load->library('session');
 				$this->session->set_userdata($newdata);
 			}

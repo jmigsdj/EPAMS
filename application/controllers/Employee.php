@@ -43,15 +43,16 @@ class Employee extends CI_Controller {
       		$row[] = $employee->empId;
 			$row[] = $employee->firstName;
 			$row[] = $employee->lastName;
-			$row[] = $employee->shiftName;
+			$row[] = $employee->shift_name;
 
 			//add html for action
 			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_employee('."'".$employee->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
 				  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_employee('."'".$employee->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
 
 			$data[] = $row;
-		}
 
+		}
+        
 		$output = array(
 						"draw" => $_POST['draw'],
 						"recordsTotal" => $this->employee->count_all(),
@@ -65,7 +66,7 @@ class Employee extends CI_Controller {
 	public function ajax_edit($id)
 	{
 		$data = $this->employee->get_by_id($id);
-		$data->dob = ($data->dob == '0000-00-00') ? '' : $data->dob; // if 0000-00-00 set tu empty for datepicker compatibility
+		// $data->dob = ($data->dob == '0000-00-00') ? '' : $data->dob; // if 0000-00-00 set tu empty for datepicker compatibility
 		echo json_encode($data);
 	}
 

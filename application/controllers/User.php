@@ -50,7 +50,7 @@ class User extends CI_Controller {
         $this->_validate();
         $data = array(
                 'username' => $this->input->post('username'),
-                'password' => $this->input->post('password'),
+                'password' => md5($this->input->post('password')),
                 'usertype_id' => $this->input->post('usertype'),
 
             );
