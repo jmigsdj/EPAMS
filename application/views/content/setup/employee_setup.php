@@ -3,7 +3,11 @@
 
     <h3>Employees Data</h3>
     <br />
-    <button class="btn btn-success" onclick="add_employee()"><i class="glyphicon glyphicon-plus"></i> Add Employee</button>
+
+    <?php if( $this->session->utype == 1 ): ?>
+        <button class="btn btn-success" onclick="add_employee()"><i class="glyphicon glyphicon-plus"></i> Add Employee</button>
+    <?php endif; ?>
+
     <button class="btn btn-default" onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i> Reload</button>
     <br />
     <br />
@@ -101,7 +105,7 @@ $('.modal-title').text('Add Person'); // Set Title to Bootstrap modal title
 }
 
 function edit_employee(id)
-{
+{    
 save_method = 'update';
 $('#form')[0].reset(); // reset form on modals
 $('.form-group').removeClass('has-error'); // clear error class
@@ -114,13 +118,14 @@ $.ajax({
     dataType: "JSON",
     success: function(data)
     {
-
         $('[name="id"]').val(data.id);
         $('[name="empId"]').val(data.empId);
         $('[name="firstName"]').val(data.firstName);
         $('[name="lastName"]').val(data.lastName);
         $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
         $('.modal-title').text('Edit Employee'); // Set title to Bootstrap modal title
+
+
 
     },
     error: function (jqXHR, textStatus, errorThrown)
