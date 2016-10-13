@@ -37,12 +37,6 @@ class Panel extends MY_Controller {
 		$this->load->view('content\dashboard',$data);
 	}
 
-
-	//Inventory
-	public function inventory(){
-		$this->load->view('content\inventory');
-	}
-
 	//Release / In-Out Page
 	public function release(){
 		$this->load->view('content\release');

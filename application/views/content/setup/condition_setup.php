@@ -1,27 +1,47 @@
-
-    <div class="container">
-        <h1 style="font-size:20pt">Condition Datatable</h1>
-
-
-        <br />
-        <button class="btn btn-success" onclick="add_condition()"><i class="glyphicon glyphicon-plus"></i> Add </button>
-        <button class="btn btn-default" onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i> Reload</button>
-        <br />
-        <br />
-        <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
-            <thead>
-                <tr>
-                    <th>Name</th>
-
-                    <th style="width:125px;">Action</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-
-
-        </table>
+<div class="col-sm-12">
+  <div class="box box-success">
+    <div class="box-header with-border">
+      <section class="content-header">
+        <h1>
+          Condition Setup
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Setup</a></li>
+          <li><a href="#">References</a></li>
+          <li class="active"><a href="#">Condition</a></li>
+        </ol>
+      </section>
+      <br>
+    </div><!-- box-body -->
+    <div ><!-- /.box-header -->
+      <div class="box-body">
+        <div class="row">
+          <div class="container">
+              <h1 style="font-size:20pt">Condition Datatable</h1>
+              <br />
+              <button class="btn btn-success" onclick="add_condition()"><i class="glyphicon glyphicon-plus"></i> Add </button>
+              <button class="btn btn-default" onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i> Reload</button>
+              <br />
+              <br />
+              <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                  <thead>
+                      <tr>
+                          <th>Name</th>
+                          <th style="width:125px;">Action</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+              </table>
+          </div>
+        </div>
+      </div><!-- box-body -->
     </div>
+  </div>
+</div>
+
 
 <script type="text/javascript">
 

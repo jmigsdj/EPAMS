@@ -140,15 +140,24 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="<?=base_url()?>media/img/no_image_found.png" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs"><b>Hello</b></span>
+                  <span class="hidden-xs"><b>Hello <?=$this->session->uname ?>!</b></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     <img src="<?=base_url()?>media/img/no_image_found.png" class="img-circle" alt="User Image" />
-                    <p><b>Username</b><br>
+                    <p><b><?=$this->session->uname ?></b><br>
                       <br>
-                      <small>Member since </small>
+											<?php if ($this->session->utype == 1): ?>
+															<small>Admin Account</small>
+											<?php endif; ?>
+											<?php if ($this->session->utype == 2): ?>
+															<small>RM Account</small>
+											<?php endif; ?>
+											<?php if ($this->session->utype == 3): ?>
+															<small>Tester Account</small>
+											<?php endif; ?>
+
                     </p>
                   </li>
                   <!-- Menu Footer-->

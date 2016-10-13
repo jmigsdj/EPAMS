@@ -40,7 +40,6 @@ class Asset extends CI_Controller {
       $row[] = $asset->barcode;
       $row[] = $asset->name;
       $row[] = $asset->brand;
-      $row[] = $asset->status;
       $row[] = $asset->model;
       $row[] = $asset->resolution;
       $row[] = $asset->processor;
@@ -62,6 +61,7 @@ class Asset extends CI_Controller {
       $row[] = $asset->storageAllocation;
       $row[] = $asset->category_id;
       $row[] = $asset->condition_id;
+			$row[] = $asset->status_id;
 
 
 			//add html for action
@@ -96,7 +96,6 @@ class Asset extends CI_Controller {
       'barcode' => $this->input->post('barcode'),
       'name' => $this->input->post('name'),
       'brand' => $this->input->post('brand'),
-      'status' => $this->input->post('status'),
       'model' => $this->input->post('model'),
       'resolution' => $this->input->post('resolution'),
       'processor' => $this->input->post('processor'),
@@ -118,6 +117,7 @@ class Asset extends CI_Controller {
       'storageAllocation' => $this->input->post('storageAllocation'),
       'category_id' => $this->input->post('category_id'),
       'condition_id' => $this->input->post('condition_id'),
+			'status_id' => $this->input->post('status_id'),
 			);
 		$insert = $this->asset->save($data);
 		echo json_encode(array("status" => TRUE));
@@ -131,7 +131,6 @@ class Asset extends CI_Controller {
       'barcode' => $this->input->post('barcode'),
       'name' => $this->input->post('name'),
       'brand' => $this->input->post('brand'),
-      'status' => $this->input->post('status'),
       'model' => $this->input->post('model'),
       'resolution' => $this->input->post('resolution'),
       'processor' => $this->input->post('processor'),
@@ -153,6 +152,7 @@ class Asset extends CI_Controller {
       'storageAllocation' => $this->input->post('storageAllocation'),
       'category_id' => $this->input->post('category_id'),
       'condition_id' => $this->input->post('condition_id'),
+			'status_id' => $this->input->post('status_id'),
 			);
 		$this->asset->update(array('id' => $this->input->post('id')), $data);
 		echo json_encode(array("status" => TRUE));
@@ -200,12 +200,6 @@ class Asset extends CI_Controller {
       $data['status'] = FALSE;
     }
 
-    if($this->input->post('status') == '')
-    {
-      $data['inputerror'][] = 'status';
-      $data['error_string'][] = 'EmployeeID is required';
-      $data['status'] = FALSE;
-    }
 
     if($this->input->post('model') == '')
     {
@@ -354,6 +348,12 @@ class Asset extends CI_Controller {
       $data['error_string'][] = 'Condition is required';
       $data['status'] = FALSE;
     }
+
+		if($this->input->post('status_id') == '')
+		{
+			$data['inputerror'][] = 'status_id';
+			$data['status'] = FALSE;
+		}
 
 		if($data['status'] === FALSE)
 		{

@@ -28,7 +28,8 @@ class Login extends MY_Controller {
 
 				$newdata = array(
 					'id'=>$user[0]['id'],
-					'utype'=>$user[0]['usertype_id']
+					'utype'=>$user[0]['usertype_id'],
+					'uname'=>$user[0]['username']
 				);
 
 				$this->load->library('session');

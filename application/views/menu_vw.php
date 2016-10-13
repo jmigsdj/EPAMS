@@ -4,7 +4,7 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="<?=base_url()?>media/comp_logo/no_image_found.png" class="img-circle-25" alt="User Image" />
+                <img src="<?=base_url()?>media/comp_logo/epLabel.png" class="img-circle-25" alt="User Image" />
             </div>
             <div class="pull-left info">
                 <p style="white-space:normal;  max-width:155px;">EPAMS</p>
@@ -23,18 +23,25 @@
                           <li><a href="javascript:void(0);" onclick="loader('condition','index');"><i class="fa fa-cog"></i> <span>Condition Setup</span></a></li>
                       </ul>
                     </li>
-                    <li><a href="javascript:void(0);" onclick="loader('user','index');"><i class="fa fa-hand-o-right"></i> <span>Users Setup</span></a></li>
                     <li><a href="javascript:void(0);" onclick="loader('asset','index');"><i class="fa fa-hand-o-right"></i> <span>Assets Setup</span></a></li>
+                  <?php if( $this->session->utype == 1 ): ?>
+                    <li><a href="javascript:void(0);" onclick="loader('user','index');"><i class="fa fa-hand-o-right"></i> <span>Users Setup</span></a></li>
                     <li><a href="javascript:void(0);" onclick="loader('employee','index');"><i class="fa fa-hand-o-right"></i> <span>Employees Setup</span></a></li>
+                  <?php endif; ?>
                 </ul>
             </li>
+            <li class=""><a href="javascript:void(0);" onclick="loader('inventory','index');"><i class="fa fa-table"></i> <span>Inventory Page</span></a></li>
+          <?php if( $this->session->utype == 1 || 2 ): ?>
+            <li class=""><a href="javascript:void(0);" onclick="loader('emprecords','index');"><i class="fa fa-table"></i> <span>Employee Records</span></a></li>
+            <li class=""><a href="javascript:void(0);" onclick="loader('panel','history');"><i class="fa fa-file"></i> <span>History Page</span></a></li>
+          <?php endif; ?>
+            <li class=""><a href="javascript:void(0);" onclick="loader('panel','release');"><i class="fa fa-link"></i> <span>Release Page</span></a></li>
             <li class="treeview">
-                <a href="javascript:void(0);"><i class="fa fa-user-secret"></i> <span>Pages</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="javascript:void(0);"><i class="fa fa-user-secret"></i> <span>Other</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
-                        <li><a href="javascript:void(0);" onclick="loader('panel','inventory');"><i class="fa fa-table"></i>Inventory Table</a></li>
-                        <li><a href="javascript:void(0);" onclick="loader('panel','employee_table');"><i class="fa fa-table"></i>Employee Table</a></li>
-                        <li><a href="javascript:void(0);" onclick="loader('panel','release');"><i class="fa fa-hand-o-right"></i>Release Page</a></li>
-                        <li><a href="javascript:void(0);" onclick="loader('panel','history');"><i class="fa fa-hand-o-right"></i>History Page</a></li>
+                        <li><a href="javascript:void(0);" onclick="loader('panel','inventory');"><i class="fa fa-hand-o-right"></i>Contact Us</a></li>
+                        <li><a href="javascript:void(0);" onclick="loader('panel','employee_table');"><i class="fa fa-hand-o-right"></i>About</a></li>
+                        <li><a href="javascript:void(0);" onclick="loader('panel','release');"><i class="fa fa-hand-o-right"></i>Help</a></li>
                     </ul>
             </li>
         </ul>

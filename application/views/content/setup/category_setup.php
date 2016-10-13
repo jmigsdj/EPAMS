@@ -8,6 +8,7 @@
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
           <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Setup</a></li>
           <li><a href="#">References</a></li>
           <li class="active"><a href="#">Category</a></li>
         </ol>
