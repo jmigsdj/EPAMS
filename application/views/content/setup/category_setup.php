@@ -119,8 +119,8 @@ function edit_category(id)
         success: function(data)
         {
 
-            $('[name="categ_id"]').val(data.categ_id);
-            $('[name="categ_name"]').val(data.categ_name);
+            $('[name="id"]').val(data.id);
+            $('[name="categName"]').val(data.categName);
 
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit Category'); // Set title to Bootstrap modal title
@@ -228,7 +228,7 @@ function delete_category(id)
                         <div class="form-group">
                             <label class="control-label col-md-3">Categories</label>
                             <div class="col-md-9">
-                                <input name="categ_name" placeholder="Categories" class="form-control" type="text">
+                                <input name="categName" placeholder="Categories" class="form-control" type="text">
                                 <span class="help-block"></span>
                             </div>
                         </div>
