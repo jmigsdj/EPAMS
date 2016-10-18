@@ -22,7 +22,7 @@
               </div>
               <!-- /.box-header -->
               <div class="box-body no-padding">
-                <?$max_users ?>
+                <?=$max_users ?>
               </div>
               <!-- /.box-body -->
             </div>

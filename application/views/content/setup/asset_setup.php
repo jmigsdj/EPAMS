@@ -322,13 +322,6 @@ if(confirm('Are you sure delete this data?'))
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label col-md-3">Status</label>
-                  <div class="col-md-9">
-                      <input name="status" placeholder="Status" class="form-control" type="text">
-                      <span class="help-block"></span>
-                  </div>
-                </div>
-                <div class="form-group">
                   <label class="control-label col-md-3">Model</label>
                   <div class="col-md-9">
                       <input name="model" placeholder="Model" class="form-control" type="text">
@@ -473,6 +466,25 @@ if(confirm('Are you sure delete this data?'))
                   <div class="col-md-9">
                       <input name="condition_id" placeholder="Condition" class="form-control" type="text">
                       <span class="help-block"></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-md-3">Status</label>
+                  <div class="col-md-9">
+                      <input name="status_id" placeholder="Status" class="form-control" type="text">
+                      <span class="help-block"></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label for="sel1" class="control-label col-md-3">Shift</label>
+                    <div class="col-md-9">
+                        <select class="form-control" id="sel1" name="shiftName">
+                          <option>----</option>
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                        </select>
                   </div>
                 </div>
             </form>

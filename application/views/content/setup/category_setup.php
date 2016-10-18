@@ -200,6 +200,12 @@ function delete_category(id)
             success: function(data)
             {
                 //if success reload ajax table
+                $.notify({
+        						icon:'fa fa-check',
+        						message: "Successfully Deleted!"
+        					},{
+        						type: 'success'
+        				});
                 $('#modal_form').modal('hide');
                 reload_table();
             },
@@ -237,7 +243,7 @@ function delete_category(id)
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
+                <button type="submit" id="btnSave" onsubmit="save()" onclick="save()" class="btn btn-primary">Save</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
             </div>
 

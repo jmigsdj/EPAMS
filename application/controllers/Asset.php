@@ -352,6 +352,7 @@ class Asset extends CI_Controller {
 		if($this->input->post('status_id') == '')
 		{
 			$data['inputerror'][] = 'status_id';
+			$data['error_string'][] = 'Status is required';
 			$data['status'] = FALSE;
 		}
 

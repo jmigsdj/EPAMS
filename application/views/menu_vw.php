@@ -15,6 +15,7 @@
         <ul class="sidebar-menu">
             <li class="header"><h5>Menu</h5></li>
             <li class="treeview active"><a href="javascript:void(0);" onclick="loader('panel','dashboard');"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+            <?php if( $this->session->utype == 1 || $this->session->utype == 2 ): ?>
             <li class="treeview"><a href="javascript:void(0);"><i class="fa fa-gears"></i> <span>Setup</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="javascript:void(0);"><i class="fa fa-hand-o-right"></i> <span>References</span><i class="fa fa-angle-left pull-right"></i></a>
@@ -30,18 +31,19 @@
                   <?php endif; ?>
                 </ul>
             </li>
+            <?php endif; ?>
             <li class=""><a href="javascript:void(0);" onclick="loader('inventory','index');"><i class="fa fa-table"></i> <span>Inventory Page</span></a></li>
-          <?php if( $this->session->utype == 1 || 2 ): ?>
+          <?php if( $this->session->utype == 1 || $this->session->utype == 2  ): ?>
             <li class=""><a href="javascript:void(0);" onclick="loader('emprecords','index');"><i class="fa fa-table"></i> <span>Employee Records</span></a></li>
             <li class=""><a href="javascript:void(0);" onclick="loader('panel','history');"><i class="fa fa-file"></i> <span>History Page</span></a></li>
           <?php endif; ?>
-            <li class=""><a href="javascript:void(0);" onclick="loader('panel','release');"><i class="fa fa-link"></i> <span>Release Page</span></a></li>
+            <li class=""><a href="javascript:void(0);" onclick="loader('release','index');"><i class="fa fa-link"></i> <span>Release Page</span></a></li>
             <li class="treeview">
                 <a href="javascript:void(0);"><i class="fa fa-user-secret"></i> <span>Other</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
-                        <li><a href="javascript:void(0);" onclick="loader('panel','inventory');"><i class="fa fa-hand-o-right"></i>Contact Us</a></li>
-                        <li><a href="javascript:void(0);" onclick="loader('panel','employee_table');"><i class="fa fa-hand-o-right"></i>About</a></li>
-                        <li><a href="javascript:void(0);" onclick="loader('panel','release');"><i class="fa fa-hand-o-right"></i>Help</a></li>
+                        <li><a href="javascript:void(0);" onclick="loader('panel','contact');"><i class="fa fa-hand-o-right"></i>Contact Us</a></li>
+                        <li><a href="javascript:void(0);" onclick="loader('panel','about');"><i class="fa fa-hand-o-right"></i>About</a></li>
+                        <li><a href="javascript:void(0);" onclick="loader('panel','help');"><i class="fa fa-hand-o-right"></i>Help</a></li>
                     </ul>
             </li>
         </ul>

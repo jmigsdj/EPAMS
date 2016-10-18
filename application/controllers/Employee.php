@@ -77,8 +77,8 @@ class Employee extends CI_Controller {
       'empId' => $this->input->post('empId'),
       'firstName' => $this->input->post('firstName'),
       'lastName' => $this->input->post('lastName'),
-			'shift_id' => $this->input->post('shiftName'),
-			);
+			'shift' => $this->input->post('shift_id'),
+		);
 		$insert = $this->employee->save($data);
 		echo json_encode(array("status" => TRUE));
 	}
@@ -90,7 +90,7 @@ class Employee extends CI_Controller {
         'empId' => $this->input->post('empId'),
 				'firstName' => $this->input->post('firstName'),
 				'lastName' => $this->input->post('lastName'),
-				'shift_id' => $this->input->post('shiftName'),
+				'shift' => $this->input->post('shift_id'),
 			);
 		$this->employee->update(array('id' => $this->input->post('id')), $data);
 		echo json_encode(array("status" => TRUE));
@@ -131,9 +131,9 @@ class Employee extends CI_Controller {
 			$data['status'] = FALSE;
 		}
 
-		if($this->input->post('shiftName') == '----')
+		if($this->input->post('shift_id') == '---- SELECT SHIFT ----')
 		{
-			$data['inputerror'][] = 'shiftName';
+			$data['inputerror'][] = 'shidt_id';
 			$data['error_string'][] = 'Shift is required';
 			$data['status'] = FALSE;
 		}

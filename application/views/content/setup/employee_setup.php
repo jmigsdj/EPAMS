@@ -269,12 +269,12 @@ if(confirm('Are you sure delete this data?'))
                     <div class="form-group">
                         <label for="sel1" class="control-label col-md-3">Shift</label>
                         <div class="col-md-9">
-                            <select class="form-control" id="sel1" name="shiftName">
-                              <option>----</option>
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
+                            <select class="form-control" id="sel1" name="shift_id">
+                              <option>---- SELECT SHIFT ----</option>
+                              <option value="1">1st Shift</option>
+                              <option value="2">2nd Shift</option>
+                              <option value="3">3rd Shift</option>
+                              <option value="4">4th Shift</option>
                             </select>
                       </div>
                     </div>

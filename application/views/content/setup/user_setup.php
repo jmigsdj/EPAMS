@@ -244,9 +244,9 @@ function delete_user(id)
                             <label for="sel1" class="control-label col-md-3">Usertype</label>
                             <div class="col-md-9">
                                 <select class="form-control" id="sel1" name="usertype">
-                                  <option>1</option>
-                                  <option>2</option>
-                                  <option>3</option>
+                                  <option value="1">Administrator</option>
+                                  <option value="2">RM</option>
+                                  <option value="3">Tester</option>
                                 </select>
                             </div>
                         </div>
