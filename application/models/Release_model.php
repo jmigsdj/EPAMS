@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Release_model extends CI_Model {
 
-	var $table = 'assets';
+	var $table = 'release';
 	var $column_order = array('device_id', 'name','model','resolution','processor','ram','os','gpu','status_id','category_id', null); //set column field database for datatable orderable
 	var $column_search = array('device_id', 'name','model','resolution','processor','ram','os','gpu','status_id','category_id'); //set column field database for datatable searchable just firstname , lastname , address are searchable
 	var $order = array('id' => 'desc'); // default order
@@ -17,11 +17,17 @@ class Release_model extends CI_Model {
 	private function _get_datatables_query()
 	{
 
+		$this->db->select('assets.name');
+		$this->db->join('assets', 'release.dev_id = assets.tracker_id', 'inner');
 		$this->db->from($this->table);
+
 
 		$i = 0;
 
-		foreach ($this->column_search as $item) // loop column
+		foreach ($this->column_search as $item)
+
+
+		 // loop column
 		{
 			if($_POST['search']['value']) // if datatable send POST for search
 			{

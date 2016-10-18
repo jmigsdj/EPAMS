@@ -37,26 +37,10 @@ class Panel extends MY_Controller {
 		$this->load->view('content\dashboard',$data);
 	}
 
-	//Release / In-Out Page
-	public function release(){
-		$this->load->view('content\release');
-	}
-
 	//History
 	public function history(){
 		$this->load->view('content\history');
 	}
 
-	public function contact(){
-		$this->load->view('content\contact');
-	}
-
-	public function about(){
-		$this->load->view('content\about');
-	}
-
-	public function help(){
-		$this->load->view('content\help');
-	}
 
 }

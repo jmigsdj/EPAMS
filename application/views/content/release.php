@@ -66,7 +66,7 @@ table = $('#table').DataTable({
 
     // Load data for the table's content from an Ajax source
     "ajax": {
-        "url": "<?php echo site_url('asset/ajax_list')?>",
+        "url": "<?php echo site_url('release/ajax_list')?>",
         "type": "POST"
     },
 

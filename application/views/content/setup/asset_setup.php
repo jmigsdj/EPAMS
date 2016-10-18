@@ -31,7 +31,6 @@
                           <th>Barcode</th>
                           <th>Name</th>
                           <th>Brand</th>
-                          <th>Status</th>
                           <th>Model</th>
                           <th>Resolution</th>
                           <th>Processor</th>
@@ -53,6 +52,7 @@
                           <th>Storage Allocation</th>
                           <th>Category</th>
                           <th>Condition</th>
+                          <th>Status</th>
                           <th style="width:125px;">Action</th>
                       </tr>
                   </thead>
@@ -66,7 +66,6 @@
                           <th>Barcode</th>
                           <th>Name</th>
                           <th>Brand</th>
-                          <th>Status</th>
                           <th>Model</th>
                           <th>Resolution</th>
                           <th>Processor</th>
@@ -88,6 +87,7 @@
                           <th>Storage Allocation</th>
                           <th>Category</th>
                           <th>Condition</th>
+                          <th>Status</th>
                           <th>Action</th>
                       </tr>
                   </tfoot>
