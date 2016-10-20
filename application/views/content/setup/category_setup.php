@@ -200,14 +200,14 @@ function delete_category(id)
             success: function(data)
             {
                 //if success reload ajax table
+                $('#modal_form').modal('hide');
+                reload_table();
                 $.notify({
         						icon:'fa fa-check',
         						message: "Successfully Deleted!"
         					},{
         						type: 'success'
         				});
-                $('#modal_form').modal('hide');
-                reload_table();
             },
             error: function (jqXHR, textStatus, errorThrown)
             {

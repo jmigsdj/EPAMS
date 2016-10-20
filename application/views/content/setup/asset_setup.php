@@ -185,12 +185,34 @@ $.ajax({
     success: function(data)
     {
 
-        $('[name="id"]').val(data.id);
-        $('[name="empId"]').val(data.empId);
-        $('[name="firstName"]').val(data.firstName);
-        $('[name="lastName"]').val(data.lastName);
+        $('[name="device_id"]').val(data.device_id);
+        $('[name="barcode"]').val(data.barcode);
+        $('[name="name"]').val(data.name);
+        $('[name="brand"]').val(data.brand);
+        $('[name="model"]').val(data.model);
+        $('[name="resolution"]').val(data.resolution);
+        $('[name="processor"]').val(data.processor);
+        $('[name="ram"]').val(data.ram);
+        $('[name="os"]').val(data.os);
+        $('[name="chipset"]').val(data.chipset);
+        $('[name="gpu"]').val(data.gpu);
+        $('[name="bit"]').val(data.bit);
+        $('[name="screenSize"]').val(data.screenSize);
+        $('[name="graphics"]').val(data.graphics);
+        $('[name="internalStorage"]').val(data.internalStorage);
+        $('[name="simSupport"]').val(data.simSupport);
+        $('[name="arrivalDate"]').val(data.arrivalDate);
+        $('[name="arrivalNotes"]').val(data.arrivalNotes);
+        $('[name="serial"]').val(data.serial);
+        $('[name="assetType"]').val(data.assetType);
+        $('[name="subAsset"]').val(data.subAsset);
+        $('[name="imei"]').val(data.imei);
+        $('[name="storageAllocation"]').val(data.storageAllocation);
+        $('[name="category_id"]').val(data.category_id);
+        $('[name="condition_id"]').val(data.condition_id);
+        $('[name="status_id"]').val(data.status_id);
         $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-        $('.modal-title').text('Edit Employee'); // Set title to Bootstrap modal title
+        $('.modal-title').text('Edit Asset'); // Set title to Bootstrap modal title
 
     },
     error: function (jqXHR, textStatus, errorThrown)
@@ -268,6 +290,12 @@ if(confirm('Are you sure delete this data?'))
             //if success reload ajax table
             $('#modal_form').modal('hide');
             reload_table();
+            $.notify({
+                icon:'fa fa-check',
+                message: "Successfully Deleted!"
+              },{
+                type: 'success'
+            });
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
@@ -455,30 +483,33 @@ if(confirm('Are you sure delete this data?'))
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label col-md-3">Category</label>
-                  <div class="col-md-9">
-                      <input name="category_id" placeholder="Category" class="form-control" type="text">
-                      <span class="help-block"></span>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="control-label col-md-3">Condition</label>
-                  <div class="col-md-9">
-                      <input name="condition_id" placeholder="Condition" class="form-control" type="text">
-                      <span class="help-block"></span>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="control-label col-md-3">Status</label>
-                  <div class="col-md-9">
-                      <input name="status_id" placeholder="Status" class="form-control" type="text">
-                      <span class="help-block"></span>
-                  </div>
-                </div>
-                <div class="form-group">
-                    <label for="sel1" class="control-label col-md-3">Shift</label>
+                    <label for="sel1" class="control-label col-md-3">Category</label>
                     <div class="col-md-9">
-                        <select class="form-control" id="sel1" name="shiftName">
+                        <select class="form-control" id="sel1" name="category_id">
+                          <option>----</option>
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                        </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label for="sel1" class="control-label col-md-3">Condition</label>
+                    <div class="col-md-9">
+                        <select class="form-control" id="sel1" name="condition_id">
+                          <option>----</option>
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                        </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label for="sel1" class="control-label col-md-3">Status</label>
+                    <div class="col-md-9">
+                        <select class="form-control" id="sel1" name="status_id">
                           <option>----</option>
                           <option>1</option>
                           <option>2</option>

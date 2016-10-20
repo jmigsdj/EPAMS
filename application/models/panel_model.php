@@ -199,24 +199,5 @@ class Panel_model extends MY_Model {
 		$row = $fetch->num_rows();
 		return $row;
 	}
-
-	/*
-	Category methods
-	*/
-
-	public function get_category(){
-		$query = $this->db->get('category');
-
-		return $query->result_array();
-	}
-
-	public function set_category(){
-		$data = array(
-			'name' => $this->input->post('name'),
-		);
-		return $this->db->insert('category', $data);
-
-
-	}
 }
 ?>

@@ -200,6 +200,13 @@ function delete_user(id)
                 //if success reload ajax table
                 $('#modal_form').modal('hide');
                 reload_table();
+
+                $.notify({
+        						icon:'fa fa-check',
+        						message: "Successfully Deleted!"
+        					},{
+        						type: 'success'
+        				});
             },
             error: function (jqXHR, textStatus, errorThrown)
             {
