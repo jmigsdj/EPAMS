@@ -38,7 +38,7 @@ CREATE TABLE `assets` (
   `graphics` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `internalStorage` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `simSupport` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `arrivalDate` date DEFAULT NULL,
+  `arrivalDate` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `arrivalNotes` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `mac` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `serial` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -54,11 +54,11 @@ CREATE TABLE `assets` (
   KEY `category_id` (`category_id`),
   KEY `condition_id` (`condition_id`),
   KEY `status_id` (`status_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `assets` */
 
-insert  into `assets`(`id`,`device_id`,`barcode`,`name`,`brand`,`model`,`resolution`,`processor`,`ram`,`os`,`chipset`,`gpu`,`bit`,`screenSize`,`graphics`,`internalStorage`,`simSupport`,`arrivalDate`,`arrivalNotes`,`mac`,`serial`,`assetType`,`subAsset`,`imei`,`storageAllocation`,`category_id`,`condition_id`,`status_id`,`tracker_id`) values (8,'213951093810938','2903581038975134','Samsung','32ajgnakn','kvnaerjvna','kjncakdjvn','vnjslrkjnsdm','vjnserkjvns','vlksjenrvksmn',';jsnervjksnev','klsnkjsern','verjnaerkjn','kjvnvakljrevn','dkjfvnaerkj','cakrjvnalk','velrkjvnsekj','0000-00-00','vsrkjnd',NULL,'vnrlksjvns','carkljvna','crjklvnsv','vnsrekjsvn','vsrkljvns',0,0,0,0);
+insert  into `assets`(`id`,`device_id`,`barcode`,`name`,`brand`,`model`,`resolution`,`processor`,`ram`,`os`,`chipset`,`gpu`,`bit`,`screenSize`,`graphics`,`internalStorage`,`simSupport`,`arrivalDate`,`arrivalNotes`,`mac`,`serial`,`assetType`,`subAsset`,`imei`,`storageAllocation`,`category_id`,`condition_id`,`status_id`,`tracker_id`) values (9,'10','20','Name','Brand','Model','Resolution','Processor','Ram','Os','Chipset','Gpu','Bit','Screen','Graphics','Internal Storage','Sim Support','0000-00-00','Arrival Notes',NULL,'Serial','Asset Type','Sub Asset','Imei','Storage Allocation',1,3,2,0),(10,'11','21','Name','Brand','Model','Resolution','Proc','Ram','Os','Chip','Gpu','x32/x64','S Size','Graph','Internal','Sim','0000-00-00','Arrival',NULL,'Serial','Asset','Sbu','Imei','Storage',4,1,2,0),(14,'1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1',NULL,'1','1','1','1','1',1,1,1,0),(15,'23','3','3','3','3','3','3','3','3','3','3','3','3','3','3','3','3','3',NULL,'3','3','3','3','3',3,3,3,0);
 
 /*Table structure for table `category` */
 
@@ -67,12 +67,13 @@ DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `categName` varchar(100) DEFAULT NULL COMMENT 'category name',
+  `tracker_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 /*Data for the table `category` */
 
-insert  into `category`(`id`,`categName`) values (1,'Android'),(2,'Phone'),(3,'Tablet'),(4,'Adapter'),(5,'Cord'),(6,'Extension Cord'),(27,'Watch Ios');
+insert  into `category`(`id`,`categName`,`tracker_id`) values (1,'Android',0),(2,'Phone',0),(3,'Tablet',0),(4,'Adapter',0),(5,'Cord',0),(6,'Extension Cord',0),(27,'Watch Ios',0);
 
 /*Table structure for table `clients` */
 
@@ -144,11 +145,14 @@ CREATE TABLE `release` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `emp_id` int(11) NOT NULL,
   `dev_id` int(11) NOT NULL,
+  `release_id` int(11) NOT NULL,
   KEY `id` (`id`),
   KEY `emp_id` (`emp_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `release` */
+
+insert  into `release`(`id`,`emp_id`,`dev_id`,`release_id`) values (1,0,0,0);
 
 /*Table structure for table `shifts` */
 
@@ -194,11 +198,11 @@ CREATE TABLE `users` (
   `modified_date` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `usertype_id` (`usertype_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`employee_id`,`username`,`password`,`created_by`,`created_date`,`usertype_id`,`modified_by`,`modified_date`) values (1,NULL,'admin','0cc175b9c0f1b6a831c399e269772661',NULL,'2016-09-28',1,NULL,NULL),(2,NULL,'rm','1a1dc91c907325c69271ddf0c944bc72',NULL,NULL,2,NULL,NULL),(3,NULL,'tester','0cc175b9c0f1b6a831c399e269772661',NULL,NULL,3,NULL,NULL),(4,NULL,'Test','098f6bcd4621d373cade4e832627b4f6',NULL,NULL,3,NULL,NULL);
+insert  into `users`(`id`,`employee_id`,`username`,`password`,`created_by`,`created_date`,`usertype_id`,`modified_by`,`modified_date`) values (4,NULL,'Test','098f6bcd4621d373cade4e832627b4f6',NULL,NULL,3,NULL,NULL),(5,NULL,'test','098f6bcd4621d373cade4e832627b4f6',NULL,NULL,3,NULL,NULL),(6,NULL,'Admin','21232f297a57a5a743894a0e4a801fc3',NULL,NULL,1,NULL,NULL),(7,NULL,'rm','1a1dc91c907325c69271ddf0c944bc72',NULL,NULL,2,NULL,NULL),(8,NULL,'test','098f6bcd4621d373cade4e832627b4f6',NULL,NULL,3,NULL,NULL),(9,NULL,'test','098f6bcd4621d373cade4e832627b4f6',NULL,NULL,2,NULL,NULL);
 
 /*Table structure for table `usertypes` */
 
