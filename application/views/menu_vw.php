@@ -32,7 +32,7 @@
                 </ul>
             </li>
             <?php endif; ?>
-            <li class=""><a href="javascript:void(0);" onclick="loader('inventory','index');"><i class="fa fa-table"></i> <span>Inventory Page</span></a></li>
+            <li class=""><a href="javascript:void(0);" onclick="loader('panel','inventory');"><i class="fa fa-table"></i> <span>Inventory Page</span></a></li>
           <?php if( $this->session->utype == 1 || $this->session->utype == 2  ): ?>
             <li class=""><a href="javascript:void(0);" onclick="loader('emprecords','index');"><i class="fa fa-table"></i> <span>Employee Records</span></a></li>
             <li class=""><a href="javascript:void(0);" onclick="loader('panel','history');"><i class="fa fa-file"></i> <span>History Page</span></a></li>

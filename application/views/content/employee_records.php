@@ -57,41 +57,7 @@ table = $('#table').DataTable({
         "url": "<?php echo site_url('employee/ajax_list')?>",
         "type": "POST"
     },
-
-    //Set column definition initialisation properties.
-    "columnDefs": [
-    {
-        "targets": [ -1 ], //last column
-        "orderable": false, //set not orderable
-    },
-    ],
-
 });
-
-//datepicker
-$('.datepicker').datepicker({
-    autoclose: true,
-    format: "yyyy-mm-dd",
-    todayHighlight: true,
-    orientation: "top auto",
-    todayBtn: true,
-    todayHighlight: true,
-});
-
-//set input/textarea/select event when change value, remove class error and remove text help block
-$("input").change(function(){
-    $(this).parent().parent().removeClass('has-error');
-    $(this).next().empty();
-});
-$("textarea").change(function(){
-    $(this).parent().parent().removeClass('has-error');
-    $(this).next().empty();
-});
-$("select").change(function(){
-    $(this).parent().parent().removeClass('has-error');
-    $(this).next().empty();
-});
-
 });
 
 </script>

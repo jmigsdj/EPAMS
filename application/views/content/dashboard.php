@@ -15,14 +15,14 @@
     <div ><!-- /.box-header -->
       <div class="box-body">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <div class="box">
               <div class="box-header">
                 <h3 class="box-title">Dashboard Table</h3>
               </div>
               <!-- /.box-header -->
               <div class="box-body no-padding">
-                <?=$max_users ?>
+
               </div>
               <!-- /.box-body -->
             </div>

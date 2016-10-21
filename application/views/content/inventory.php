@@ -21,20 +21,53 @@
               <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
                   <thead>
                       <tr>
-                          <th>Device ID</th>
-                          <th>Name</th>
-                          <th>Model</th>
-                          <th>Resolution</th>
-                          <th>Processor</th>
-                          <th>Ram</th>
-                          <th>Os</th>
-                          <th>Gpu</th>
-                          <th>Bit</th>
-                          <th>Sim Support</th>
-                          <th>Category</th>
+                        <th>Device ID</th>
+                        <th>Name</th>
+                        <th>Model</th>
+                        <th>Resolution</th>
+                        <th>Processor</th>
+                        <th>Ram</th>
+                        <th>Os</th>
+                        <th>Gpu</th>
+                        <th>x32/x64</th>
+                        <th>Sim Support</th>
+                        <th>Category</th>
+                        <th>Condition</th>
                       </tr>
                   </thead>
+                  <tfoot>
+                      <tr>
+                        <th>Device ID</th>
+                        <th>Name</th>
+                        <th>Model</th>
+                        <th>Resolution</th>
+                        <th>Processor</th>
+                        <th>Ram</th>
+                        <th>Os</th>
+                        <th>Gpu</th>
+                        <th>x32/x64</th>
+                        <th>Sim Support</th>
+                        <th>Category</th>
+                        <th>Condition</th>
+                      </tr>
+                  </tfoot>
                   <tbody>
+                    <?php foreach ($inventory as $inv_item): ?>
+                      <tr>
+                        <td><?=$inv_item['device_id'] ?></td>
+                        <td><?=$inv_item['name'] ?></td>
+                        <td><?=$inv_item['model'] ?></td>
+                        <td><?=$inv_item['resolution'] ?></td>
+                        <td><?=$inv_item['processor'] ?></td>
+                        <td><?=$inv_item['ram'] ?></td>
+                        <td><?=$inv_item['os'] ?></td>
+                        <td><?=$inv_item['gpu'] ?></td>
+                        <td><?=$inv_item['bit'] ?></td>
+                        <td><?=$inv_item['simSupport'] ?></td>
+                        <td><?=$inv_item['categName'] ?></td>
+                        <td><?=$inv_item['condition'] ?></td>
+                      </tr>
+                    <?php endforeach; ?>
                   </tbody>
               </table>
           </div>
@@ -45,65 +78,8 @@
   </div>
 </div>
 
-
-
-
-<script type="text/javascript">
-
-var save_method; //for save method string
-var table;
-
-$(document).ready(function() {
-
-//datatables
-table = $('#table').DataTable({
-
-    "scrollX": true,
-    "processing": true, //Feature control the processing indicator.
-    "serverSide": true, //Feature control DataTables' server-side processing mode.
-    "order": [], //Initial no order.
-
-    // Load data for the table's content from an Ajax source
-    "ajax": {
-        "url": "<?php echo site_url('asset/ajax_list')?>",
-        "type": "POST"
-    },
-
-    //Set column definition initialisation properties.
-    "columnDefs": [
-    {
-        "targets": [ -1 ], //last column
-        "orderable": false, //set not orderable
-    },
-    ],
-
-});
-
-//datepicker
-$('.datepicker').datepicker({
-    autoclose: true,
-    format: "yyyy-mm-dd",
-    todayHighlight: true,
-    orientation: "top auto",
-    todayBtn: true,
-    todayHighlight: true,
-});
-
-//set input/textarea/select event when change value, remove class error and remove text help block
-$("input").change(function(){
-    $(this).parent().parent().removeClass('has-error');
-    $(this).next().empty();
-});
-$("textarea").change(function(){
-    $(this).parent().parent().removeClass('has-error');
-    $(this).next().empty();
-});
-$("select").change(function(){
-    $(this).parent().parent().removeClass('has-error');
-    $(this).next().empty();
-});
-
-});
-
-
+<script>
+  $(document).ready(function() {
+  $('#table').DataTable();
+  } );
 </script>
