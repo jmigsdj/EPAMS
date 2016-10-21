@@ -34,8 +34,40 @@ class Panel extends MY_Controller {
 
 	public function dashboard(){
 		$data['max_users']=$this->panel_model->count_user();
+		$data['inventory']=$this->panel_model->select_inventory();
 		$this->load->view('content\dashboard',$data);
 	}
+
+	public function inventory(){
+		$data['inventory']=$this->panel_model->select_inventory();
+		$this->load->view('content\inventory',$data);
+	}
+
+	public function emp_records(){
+		$data['employees']=$this->panel_model->select_empRecords();
+		$this->load->view('content\employee_records',$data);
+	}
+
+	//fail ajax
+	// public function inventory_list(){
+	// 	$list=$this->panel_model->select_inventory();
+	// 	$data = array();
+	// 	foreach ($list as $item) {
+	// 		$row = array();
+	// 		$row[] = $item->device_id;
+	// 		$row[] = $item->name;
+	// 		$row[] = $item->brand;
+	// 		$row[] = $item->model;
+	// 		$row[] = $item->categName;
+	// 		$row[] = $item->condition;
+	//
+	// 		$data[] = $row;
+	// 	}
+	// 	$output = array(
+	// 			"data" => $data
+	// 	);
+	// 	echo json_encode($data);
+	// }
 
 	//History
 	public function history(){
