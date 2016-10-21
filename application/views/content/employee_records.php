@@ -28,6 +28,14 @@
                       </tr>
                   </thead>
                   <tbody>
+                    <?php foreach ($employees as $emp): ?>
+                      <tr>
+                        <td><?=$emp['empId'] ?></td>
+                        <td><?=$emp['firstName'] ?></td>
+                        <td><?=$emp['lastName'] ?></td>
+                        <td><?=$emp['shift_name'] ?></td>
+                      </tr>
+                    <?php endforeach; ?>
                   </tbody>
               </table>
           </div><!-- end of container -->
@@ -37,27 +45,8 @@
   </div>
 </div>
 
-
-<script type="text/javascript">
-
-var save_method; //for save method string
-var table;
-
-$(document).ready(function() {
-
-//datatables
-table = $('#table').DataTable({
-
-    "processing": true, //Feature control the processing indicator.
-    "serverSide": true, //Feature control DataTables' server-side processing mode.
-    "order": [], //Initial no order.
-
-    // Load data for the table's content from an Ajax source
-    "ajax": {
-        "url": "<?php echo site_url('employee/ajax_list')?>",
-        "type": "POST"
-    },
-});
-});
-
+<script>
+  $(document).ready(function() {
+  $('#table').DataTable();
+  } );
 </script>

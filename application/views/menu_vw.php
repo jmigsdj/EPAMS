@@ -34,7 +34,7 @@
             <?php endif; ?>
             <li class=""><a href="javascript:void(0);" onclick="loader('panel','inventory');"><i class="fa fa-table"></i> <span>Inventory Page</span></a></li>
           <?php if( $this->session->utype == 1 || $this->session->utype == 2  ): ?>
-            <li class=""><a href="javascript:void(0);" onclick="loader('emprecords','index');"><i class="fa fa-table"></i> <span>Employee Records</span></a></li>
+            <li class=""><a href="javascript:void(0);" onclick="loader('panel','emp_records');"><i class="fa fa-table"></i> <span>Employee Records</span></a></li>
             <li class=""><a href="javascript:void(0);" onclick="loader('panel','history');"><i class="fa fa-file"></i> <span>History Page</span></a></li>
           <?php endif; ?>
             <li class=""><a href="javascript:void(0);" onclick="loader('release','index');"><i class="fa fa-link"></i> <span>Release Page</span></a></li>

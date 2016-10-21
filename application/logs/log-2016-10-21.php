@@ -56,3 +56,57 @@ ERROR - 2016-10-21 07:41:07 --> DATA ID: 9
 ERROR - 2016-10-21 07:44:25 --> 404 Page Not Found: Media/css
 ERROR - 2016-10-21 07:44:46 --> DATA ID: 9
 ERROR - 2016-10-21 07:45:37 --> DATA ID: 8
+ERROR - 2016-10-21 08:19:09 --> DATA ID: 15
+ERROR - 2016-10-21 09:28:50 --> Query error: Table 'epams.news' doesn't exist - Invalid query: SELECT *
+FROM `news`
+ERROR - 2016-10-21 09:35:29 --> 404 Page Not Found: News/test
+ERROR - 2016-10-21 09:35:33 --> 404 Page Not Found: 
+ERROR - 2016-10-21 09:35:38 --> 404 Page Not Found: 
+ERROR - 2016-10-21 09:36:04 --> 404 Page Not Found: News/test
+ERROR - 2016-10-21 09:51:16 --> Query error: Column 'id' in order clause is ambiguous - Invalid query: SELECT `assets`.`name`
+FROM `release`
+INNER JOIN `assets` ON `release`.`dev_id` = `assets`.`tracker_id`
+ORDER BY `id` DESC
+ LIMIT 10
+ERROR - 2016-10-21 09:51:18 --> 404 Page Not Found: Emprecords/index
+ERROR - 2016-10-21 09:51:35 --> 404 Page Not Found: Emprecords/index
+ERROR - 2016-10-21 15:52:22 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM
+				`employees` e
+			LEFT JOIN `shifts` s
+				ON s.`shift_id` = e.`shift' at line 6 - Invalid query: SELECT
+				e.`empId`,
+				e.`firstName`,
+				e.`lastName`,
+				s.`shift`,
+			FROM
+				`employees` e
+			LEFT JOIN `shifts` s
+				ON s.`shift_id` = e.`shift`
+ERROR - 2016-10-21 15:53:18 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM
+				`employees` e
+			LEFT JOIN `shifts` s
+				ON s.`shift_id` = e.`shift' at line 6 - Invalid query: SELECT
+				e.`empId`,
+				e.`firstName`,
+				e.`lastName`,
+				s.`shift`,
+			FROM
+				`employees` e
+			LEFT JOIN `shifts` s
+				ON s.`shift_id` = e.`shift`
+ERROR - 2016-10-21 15:56:35 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM
+				`employees` e
+			LEFT JOIN `shifts` s
+				ON s.`shift_id` = e.`shift' at line 6 - Invalid query: SELECT
+				e.`empId`,
+				e.`firstName`,
+				e.`lastName`,
+				s.`shift_name`,
+			FROM
+				`employees` e
+			LEFT JOIN `shifts` s
+				ON s.`shift_id` = e.`shift`
+ERROR - 2016-10-21 15:58:03 --> Severity: Notice --> Undefined index: shift C:\xampp\htdocs\epams\application\views\content\employee_records.php 36
+ERROR - 2016-10-21 15:58:03 --> Severity: Notice --> Undefined index: shift C:\xampp\htdocs\epams\application\views\content\employee_records.php 36
+ERROR - 2016-10-21 15:58:03 --> Severity: Notice --> Undefined index: shift C:\xampp\htdocs\epams\application\views\content\employee_records.php 36
+ERROR - 2016-10-21 15:58:03 --> Severity: Notice --> Undefined index: shift C:\xampp\htdocs\epams\application\views\content\employee_records.php 36

@@ -234,5 +234,20 @@ class Panel_model extends MY_Model {
 		$row = $fetch->result_array();
 		return $row;
 	}
+
+	public function select_empRecords(){
+		$query="SELECT
+			e.`empId`,
+			e.`firstName`,
+			e.`lastName`,
+			s.`shift_name`
+		FROM
+			`employees` AS e
+		LEFT JOIN `shifts` s
+			ON s.`shift_id` = e.`shift`";
+		$fetch=$this->db->query($query);
+		$row = $fetch->result_array();
+		return $row;
+	}
 }
 ?>

@@ -43,6 +43,11 @@ class Panel extends MY_Controller {
 		$this->load->view('content\inventory',$data);
 	}
 
+	public function emp_records(){
+		$data['employees']=$this->panel_model->select_empRecords();
+		$this->load->view('content\employee_records',$data);
+	}
+
 	//fail ajax
 	// public function inventory_list(){
 	// 	$list=$this->panel_model->select_inventory();
