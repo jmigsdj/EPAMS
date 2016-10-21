@@ -236,6 +236,7 @@ function delete_category(id)
                             <label class="control-label col-md-3">Categories</label>
                             <div class="col-md-9">
                                 <input name="categName" placeholder="Categories" class="form-control" type="text">
+                                <input type="text" value="" style="display: none;">
                                 <span class="help-block"></span>
                             </div>
                         </div>
