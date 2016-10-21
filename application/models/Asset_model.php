@@ -92,7 +92,7 @@ class Asset_model extends CI_Model {
 
 	public function update($where, $data)
 	{
-		$this->db->update($this->table, $data, $where);
+		$this->db->update($this->table, $data, array('id' => $where));
 		return $this->db->affected_rows();
 	}
 

@@ -211,9 +211,9 @@ $.ajax({
         $('[name="category_id"]').val(data.category_id);
         $('[name="condition_id"]').val(data.condition_id);
         $('[name="status_id"]').val(data.status_id);
+        $('[name="main_id"]').val(data.id);
         $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
         $('.modal-title').text('Edit Asset'); // Set title to Bootstrap modal title
-
     },
     error: function (jqXHR, textStatus, errorThrown)
     {
@@ -517,6 +517,9 @@ if(confirm('Are you sure delete this data?'))
                           <option>4</option>
                         </select>
                   </div>
+                  
+                  <input type="hidden" name="main_id">
+
                 </div>
             </form>
         </div>
