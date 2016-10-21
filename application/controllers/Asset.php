@@ -152,10 +152,15 @@ class Asset extends CI_Controller {
       'storageAllocation' => $this->input->post('storageAllocation'),
       'category_id' => $this->input->post('category_id'),
       'condition_id' => $this->input->post('condition_id'),
-			'status_id' => $this->input->post('status_id')
+			'status_id' => $this->input->post('status_id'),
+      'id' => $this->input->post('main_id')
 			);
-		$this->asset->update(array('id' => $this->input->post('id')), $data);
+		$this->asset->update($data['id'], $data);
+    
+    log_message('error', "DATA ID: " . ($data['id']));
+
 		echo json_encode(array("status" => TRUE));
+
 	}
 
 	public function ajax_delete($id)
