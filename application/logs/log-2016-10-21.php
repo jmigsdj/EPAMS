@@ -110,3 +110,8 @@ ERROR - 2016-10-21 15:58:03 --> Severity: Notice --> Undefined index: shift C:\x
 ERROR - 2016-10-21 15:58:03 --> Severity: Notice --> Undefined index: shift C:\xampp\htdocs\epams\application\views\content\employee_records.php 36
 ERROR - 2016-10-21 15:58:03 --> Severity: Notice --> Undefined index: shift C:\xampp\htdocs\epams\application\views\content\employee_records.php 36
 ERROR - 2016-10-21 15:58:03 --> Severity: Notice --> Undefined index: shift C:\xampp\htdocs\epams\application\views\content\employee_records.php 36
+ERROR - 2016-10-21 11:55:50 --> Query error: Column 'id' in order clause is ambiguous - Invalid query: SELECT `assets`.`name`
+FROM `release`
+INNER JOIN `assets` ON `release`.`dev_id` = `assets`.`tracker_id`
+ORDER BY `id` DESC
+ LIMIT 10

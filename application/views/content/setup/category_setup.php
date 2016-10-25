@@ -150,7 +150,6 @@ function save()
     } else {
         url = "<?php echo site_url('category/ajax_update')?>";
     }
-
     // ajax adding data to database
     $.ajax({
         url : url,
@@ -186,6 +185,7 @@ function save()
 
         }
     });
+    return false;
 }
 
 function delete_category(id)
@@ -222,14 +222,15 @@ function delete_category(id)
 
 <!-- Bootstrap modal -->
 <div class="modal fade" id="modal_form" role="dialog">
+
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h3 class="modal-title">Categories Form</h3>
             </div>
+          <form id="form" name="form" onsubmit="return save();"class="form-horizontal">
             <div class="modal-body form">
-                <form action="#" id="form" class="form-horizontal">
                     <input type="hidden" value="" name="id"/>
                     <div class="form-body">
                         <div class="form-group">
@@ -241,13 +242,13 @@ function delete_category(id)
                             </div>
                         </div>
                     </div>
-                </form>
+
             </div>
             <div class="modal-footer">
-                <button type="submit" id="btnSave" onsubmit="save()" onclick="save()" class="btn btn-primary">Save</button>
+                <button type="submit" id="btnSave" class="btn btn-primary">Save</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
             </div>
-
+          </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

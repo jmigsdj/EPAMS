@@ -27,7 +27,12 @@ class Panel extends MY_Controller {
 		$this->load->view('header_vw');
 		$this->load->view('menu_vw');
 		$this->load->view('content_hdr');
-		$this->dashboard();
+		if( $this->session->utype == 1 || $this->session->utype == 2){
+			$this->dashboard();
+		}else {
+			$this->inventory();
+		}
+
 		$this->load->view('content_ftr');
 		$this->load->view('footer_vw');
 	}

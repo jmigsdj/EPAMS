@@ -19,7 +19,6 @@ class User_model extends CI_Model {
         $this->db->select('users.*, users.id AS users_id, usertypes.*, usertypes.id AS usertypes_id');
         $this->db->from($this->table)->join('usertypes', 'users.usertype_id = usertypes.id', 'inner');
 
-
         $i = 0;
 
         foreach ($this->column_search as $item) // loop column

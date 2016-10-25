@@ -14,8 +14,8 @@
 <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header"><h5>Menu</h5></li>
-            <li class="treeview active"><a href="javascript:void(0);" onclick="loader('panel','dashboard');"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
             <?php if( $this->session->utype == 1 || $this->session->utype == 2 ): ?>
+            <li class="treeview active"><a href="javascript:void(0);" onclick="loader('panel','dashboard');"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
             <li class="treeview"><a href="javascript:void(0);"><i class="fa fa-gears"></i> <span>Setup</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="javascript:void(0);"><i class="fa fa-hand-o-right"></i> <span>References</span><i class="fa fa-angle-left pull-right"></i></a>

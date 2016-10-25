@@ -52,7 +52,9 @@
     <script src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js')?>"></script>
     <script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.js')?>"></script>
     <script src="<?php echo base_url('assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js')?>"></script>
-
+		<script type="text/javascript">
+			$.fn.modal.Constructor.prototype.enforceFocus = function() {};
+		</script>
 
 		<!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->

@@ -208,9 +208,9 @@ $.ajax({
         $('[name="subAsset"]').val(data.subAsset);
         $('[name="imei"]').val(data.imei);
         $('[name="storageAllocation"]').val(data.storageAllocation);
-        $('[name="category_id"]').val(data.category_id);
-        $('[name="condition_id"]').val(data.condition_id);
-        $('[name="status_id"]').val(data.status_id);
+        $('[name="category_id"]').select2('data',{id:data.category_id,text:data.categName});
+        $('[name="condition_id"]').select2('data',{id:data.condition_id,text:data.condition});
+        $('[name="status_id"]').select2('data',{id:data.status_id,text:data.status});
         $('[name="main_id"]').val(data.id);
         $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
         $('.modal-title').text('Edit Asset'); // Set title to Bootstrap modal title
@@ -305,7 +305,47 @@ if(confirm('Are you sure delete this data?'))
 
 }
 }
+//Select Options
+  $('#category_id').select2({
+    ajax:{
+      url:'<?=base_url()?>/asset/select_category',
+      dataType: 'json',
+      data: function (name, page) {
+            return { name: name };
+        },
+      results: function (data,page){
+        return {results: data};
+      }
+    }
+  });
 
+  $('#condition_id').select2({
+    ajax:{
+      url:'<?=base_url()?>/asset/select_condition',
+      dataType: 'json',
+      data: function (name, page) {
+            return { name: name };
+        },
+      results: function (data,page){
+        return {results: data};
+      }
+    }
+  });
+
+  $('#status_id').select2({
+    ajax:{
+      url:'<?=base_url()?>/asset/select_status',
+      dataType: 'json',
+      data: function (name, page) {
+            return { name: name };
+        },
+      results: function (data,page){
+        return {results: data};
+      }
+    }
+  });
+
+  $('#arrivalDate').datetimepicker();
 </script>
 
 <!-- Bootstrap modal -->
@@ -436,7 +476,7 @@ if(confirm('Are you sure delete this data?'))
                 <div class="form-group">
                   <label class="control-label col-md-3">Arrival Date</label>
                   <div class="col-md-9">
-                      <input name="arrivalDate" placeholder="Arrival Date" class="form-control" type="text">
+                      <input name="arrivalDate" id="arrivalDate" placeholder="Arrival Date" class="form-control" type="text">
                       <span class="help-block"></span>
                   </div>
                 </div>
@@ -485,42 +525,22 @@ if(confirm('Are you sure delete this data?'))
                 <div class="form-group">
                     <label for="sel1" class="control-label col-md-3">Category</label>
                     <div class="col-md-9">
-                        <select class="form-control" id="sel1" name="category_id">
-                          <option>----</option>
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                        </select>
+                        <input type="hidden" name="category_id" id="category_id" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
                     <label for="sel1" class="control-label col-md-3">Condition</label>
                     <div class="col-md-9">
-                        <select class="form-control" id="sel1" name="condition_id">
-                          <option>----</option>
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                        </select>
+                        <input type="hidden" name="condition_id" id="condition_id" class="form-control">
                   </div>
                 </div>
                 <div class="form-group">
                     <label for="sel1" class="control-label col-md-3">Status</label>
                     <div class="col-md-9">
-                        <select class="form-control" id="sel1" name="status_id">
-                          <option>----</option>
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                        </select>
+                        <input type="hidden" name="status_id" id="status_id" class="form-control">
                   </div>
-                  
-                  <input type="hidden" name="main_id">
-
                 </div>
+                <input type="hidden" name="main_id">
             </form>
         </div>
         <div class="modal-footer">
