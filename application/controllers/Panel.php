@@ -38,6 +38,7 @@ class Panel extends MY_Controller {
 	}
 
 	public function dashboard(){
+		$data['count_assets']=$this->panel_model->count_assets();
 		$data['max_users']=$this->panel_model->count_user();
 		$data['inventory']=$this->panel_model->select_inventory();
 		$this->load->view('content\dashboard',$data);
