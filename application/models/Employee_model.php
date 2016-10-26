@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Employee_model extends CI_Model {
 
-	var $table = 'employees e';
+	var $table = 'employees';
 	var $column_order = array('empId','firstname','lastname', 'shift_id', null); //set column field database for datatable orderable
 	var $column_search = array('empId','firstname','lastname'); //set column field database for datatable searchable just firstname , lastname , address are searchable
 	var $order = array('id' => 'desc'); // default order
@@ -17,17 +17,7 @@ class Employee_model extends CI_Model {
 	private function _get_datatables_query()
 	{
 
-		$this->db->select(
-		'e.id,
-		e.empId,
-		e.firstName,
-		e.lastName,
-		s.id as shift_id,
-		s.shift_name');
-
-		$this->db->join('shifts s', 's.id = e.shift', 'left');
-
-		$this->db->from($this->table);
+		$this->db->from($this->table)->join('shifts', 'employees.shift = shifts.shift_id', 'inner');
 
 		$i = 0;
 
@@ -58,8 +48,7 @@ class Employee_model extends CI_Model {
 		}
 		else if(isset($this->order))
 		{
-			$order = $this->order;
-			$this->db->order_by(key($order), $order[key($order)]);
+			$this->db->order_by('employees.id', 'ASC');
 		}
 	}
 
@@ -87,17 +76,8 @@ class Employee_model extends CI_Model {
 
 	public function get_by_id($id)
 	{
-		$this->db->select(
-		'e.id,
-		e.empId,
-		e.firstName,
-		e.lastName,
-		s.id as shift_id,
-		s.shift_name');
-
 		$this->db->from($this->table);
-		$this->db->join('shifts s', 's.id = e.shift', 'left');
-		$this->db->where('e.id',$id);
+		$this->db->where('id',$id);
 		$query = $this->db->get();
 
 		return $query->row();
@@ -105,14 +85,14 @@ class Employee_model extends CI_Model {
 
 	public function save($data)
 	{
-		//$this->db->join('shifts', 'employees.shift_id = shifts.id', 'inner');
+		$this->db->join('shifts', 'employees.shift_id = shifts.id', 'inner');
 		$this->db->insert($this->table, $data);
 		return $this->db->insert_id();
 	}
 
 	public function update($where, $data)
 	{
-		//$this->db->join('shifts', 'employees.shift_id = shifts.id', 'inner');
+		$this->db->join('shifts', 'employees.shift_id = shifts.id', 'inner');
 		$this->db->update($this->table, $data, $where);
 		return $this->db->affected_rows();
 	}
@@ -123,12 +103,5 @@ class Employee_model extends CI_Model {
 		$this->db->delete($this->table);
 	}
 
-	public function select_shift($id){
-			$this->db->like('shift_name',$id);
-			$fetch = $this->db->get("shifts");
-			$row = $fetch->result_array();
-			//print_r($this->db->last_query());
-			return $row;
-	}
 
 }

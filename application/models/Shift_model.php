@@ -17,7 +17,7 @@ class Shift_model extends CI_Model {
     private function _get_datatables_query()
     {
 
-        //$this->db->select('s.shift_id as id, s.shift_name');
+        $this->db->select('s.shift_id as id, s.shift_name');
         $this->db->from($this->table);
 
         $i = 0;
