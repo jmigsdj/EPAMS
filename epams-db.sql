@@ -54,11 +54,11 @@ CREATE TABLE `assets` (
   KEY `category_id` (`category_id`),
   KEY `condition_id` (`condition_id`),
   KEY `status_id` (`status_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `assets` */
 
-insert  into `assets`(`id`,`device_id`,`barcode`,`name`,`brand`,`model`,`resolution`,`processor`,`ram`,`os`,`chipset`,`gpu`,`bit`,`screenSize`,`graphics`,`internalStorage`,`simSupport`,`arrivalDate`,`arrivalNotes`,`mac`,`serial`,`assetType`,`subAsset`,`imei`,`storageAllocation`,`category_id`,`condition_id`,`status_id`,`tracker_id`) values (9,'10','20','Name','Brand','Model','Resolution','Processor','Ram','Os','Chipset','Gpu','Bit','Screen','Graphics','Internal Storage','Sim Support','0000-00-00','Arrival Notes',NULL,'Serial','Asset Type','Sub Asset','Imei','Storage Allocation',1,3,2,0),(10,'11','21','Name','Brand','Model','Resolution','Proc','Ram','Os','Chip','Gpu','x32/x64','S Size','Graph','Internal','Sim','0000-00-00','Arrival',NULL,'Serial','Asset','Sbu','Imei','Storage',4,1,2,0),(14,'1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1',NULL,'1','1','1','1','1',1,1,1,0),(15,'23','3','3','3','3','3','3','3','3','3','3','3','3','3','3','3','3','3',NULL,'3','3','3','3','3',3,3,3,0);
+insert  into `assets`(`id`,`device_id`,`barcode`,`name`,`brand`,`model`,`resolution`,`processor`,`ram`,`os`,`chipset`,`gpu`,`bit`,`screenSize`,`graphics`,`internalStorage`,`simSupport`,`arrivalDate`,`arrivalNotes`,`mac`,`serial`,`assetType`,`subAsset`,`imei`,`storageAllocation`,`category_id`,`condition_id`,`status_id`,`tracker_id`) values (16,'1234','5431','Lappytop','MSI','GP60','1367 x 1080','2ghz intel I5','8gb','Windows 100','Family Chipset','GTX 1080TI','x64','15\"','Nigga','100TB','Hell Yea','Today','Ganda',NULL,'130481958','Intern','Sub','2481279','1tb',1,7,1,0);
 
 /*Table structure for table `category` */
 
@@ -97,11 +97,11 @@ CREATE TABLE `condition` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `condition` varchar(100) DEFAULT NULL COMMENT 'condition status',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 /*Data for the table `condition` */
 
-insert  into `condition`(`id`,`condition`) values (1,'Bad'),(2,'Broken'),(3,'Good'),(7,'New'),(8,'Old');
+insert  into `condition`(`id`,`condition`) values (1,'Bad'),(2,'Broken'),(3,'Good'),(7,'New'),(8,'Old'),(9,'Shiny');
 
 /*Table structure for table `employees` */
 
@@ -131,8 +131,13 @@ insert  into `employees`(`id`,`empId`,`firstName`,`lastName`,`created_by`,`creat
 DROP TABLE IF EXISTS `history`;
 
 CREATE TABLE `history` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  KEY `id` (`id`)
+  `history_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `status_id` int(11) DEFAULT NULL,
+  `asset_id` int(11) DEFAULT NULL,
+  `timestamp` varchar(99) DEFAULT NULL,
+  PRIMARY KEY (`history_id`),
+  KEY `id` (`history_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `history` */
@@ -176,11 +181,11 @@ CREATE TABLE `status` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `status` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 /*Data for the table `status` */
 
-insert  into `status`(`id`,`status`) values (1,'Available'),(2,'On Shelf'),(3,'On Hand'),(4,'Borrowed');
+insert  into `status`(`id`,`status`) values (1,'Borrowed'),(2,'Returned'),(3,'On Hand'),(4,'On Shelf');
 
 /*Table structure for table `users` */
 
@@ -198,11 +203,11 @@ CREATE TABLE `users` (
   `modified_date` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `usertype_id` (`usertype_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`employee_id`,`username`,`password`,`created_by`,`created_date`,`usertype_id`,`modified_by`,`modified_date`) values (4,NULL,'Test','098f6bcd4621d373cade4e832627b4f6',NULL,NULL,3,NULL,NULL),(5,NULL,'test','098f6bcd4621d373cade4e832627b4f6',NULL,NULL,3,NULL,NULL),(6,NULL,'Admin','21232f297a57a5a743894a0e4a801fc3',NULL,NULL,1,NULL,NULL),(7,NULL,'rm','1a1dc91c907325c69271ddf0c944bc72',NULL,NULL,2,NULL,NULL),(8,NULL,'test','098f6bcd4621d373cade4e832627b4f6',NULL,NULL,3,NULL,NULL),(9,NULL,'test','098f6bcd4621d373cade4e832627b4f6',NULL,NULL,2,NULL,NULL);
+insert  into `users`(`id`,`employee_id`,`username`,`password`,`created_by`,`created_date`,`usertype_id`,`modified_by`,`modified_date`) values (4,NULL,'RM','098f6bcd4621d373cade4e832627b4f6',NULL,NULL,2,NULL,NULL),(6,NULL,'Admin','21232f297a57a5a743894a0e4a801fc3',NULL,NULL,1,NULL,NULL),(7,NULL,'Tester','1a1dc91c907325c69271ddf0c944bc72',NULL,NULL,3,NULL,NULL);
 
 /*Table structure for table `usertypes` */
 

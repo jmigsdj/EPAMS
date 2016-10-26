@@ -534,6 +534,12 @@ if(confirm('Are you sure delete this data?'))
                         <input type="hidden" name="condition_id" id="condition_id" class="form-control">
                   </div>
                 </div>
+                <div class="form-group">
+                    <label for="sel1" class="control-label col-md-3">Status</label>
+                    <div class="col-md-9">
+                        <input type="hidden" name="status_id" id="status_id" class="form-control">
+                  </div>
+                </div>
                 <input type="hidden" name="main_id">
             </form>
         </div>

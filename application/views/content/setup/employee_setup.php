@@ -238,6 +238,18 @@ if(confirm('Are you sure delete this data?'))
 }
 }
 
+  $('#shift_id').select2({
+    ajax:{
+      url:'<?=base_url()?>/employee/select_shift',
+      dataType: 'json',
+      data: function (name, page) {
+            return { name: name };
+        },
+      results: function (data,page){
+        return {results: data};
+      }
+    }
+  });
 </script>
 
 <!-- Bootstrap modal -->
@@ -276,15 +288,10 @@ if(confirm('Are you sure delete this data?'))
                     <div class="form-group">
                         <label for="sel1" class="control-label col-md-3">Shift</label>
                         <div class="col-md-9">
-                            <select class="form-control" id="sel1" name="shift_id">
-                              <option>---- SELECT SHIFT ----</option>
-                              <option value="1">1st Shift</option>
-                              <option value="2">2nd Shift</option>
-                              <option value="3">3rd Shift</option>
-                              <option value="4">4th Shift</option>
-                            </select>
+                            <input type="hidden" name="shift_id" id="shift_id" class="form-control">
                       </div>
                     </div>
+                    <input type="hidden" name="main_id">
                 </div>
             </form>
         </div>

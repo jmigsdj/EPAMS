@@ -74,6 +74,7 @@ class Employee extends CI_Controller {
 	{
 		$this->_validate();
 		$data = array(
+			'id' => "",
       'empId' => $this->input->post('empId'),
       'firstName' => $this->input->post('firstName'),
       'lastName' => $this->input->post('lastName'),
@@ -133,7 +134,7 @@ class Employee extends CI_Controller {
 
 		if($this->input->post('shift_id') == '---- SELECT SHIFT ----')
 		{
-			$data['inputerror'][] = 'shidt_id';
+			$data['inputerror'][] = 'shift_id';
 			$data['error_string'][] = 'Shift is required';
 			$data['status'] = FALSE;
 		}
@@ -143,6 +144,19 @@ class Employee extends CI_Controller {
 			echo json_encode($data);
 			exit();
 		}
+	}
+
+	public function select_shift(){
+		$id = $this->input->get('name',true);
+		$result = $this->employee->select_shift($id);
+		$got_result='';
+		if(!empty($result)){
+			foreach ($result as $key) {
+				$got_result[]=array("id"=>$key['id'],"text"=>$key['shift_name']);
+			}
+		}
+		//print_r($got_result);
+		echo json_encode($got_result);
 	}
 
 }
