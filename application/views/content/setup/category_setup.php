@@ -30,6 +30,7 @@
                   <thead>
                       <tr>
                           <th>Name</th>
+
                           <th style="width:125px;">Action</th>
                       </tr>
                   </thead>
@@ -230,17 +231,18 @@ function delete_category(id)
             </div>
           <form id="form" name="form" onsubmit="return save();"class="form-horizontal">
             <div class="modal-body form">
-                <input type="hidden" value="" name="id"/>
-                <div class="form-body">
-                    <div class="form-group">
-                        <label class="control-label col-md-3">Categories</label>
-                        <div class="col-md-9">
-                            <input name="categName" placeholder="Categories" class="form-control" type="text">
-                            <input type="text" value="" style="display: none;">
-                            <span class="help-block"></span>
+                    <input type="hidden" value="" name="id"/>
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Categories</label>
+                            <div class="col-md-9">
+                                <input name="categName" placeholder="Categories" class="form-control" type="text">
+                                <input type="text" value="" style="display: none;">
+                                <span class="help-block"></span>
+                            </div>
                         </div>
                     </div>
-                </div>
+
             </div>
             <div class="modal-footer">
                 <button type="submit" id="btnSave" class="btn btn-primary">Save</button>
