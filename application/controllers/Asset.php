@@ -36,32 +36,32 @@ class Asset extends CI_Controller {
 		foreach ($list as $asset) {
 			$no++;
 			$row = array();
-      $row[] = $asset->device_id;
-      $row[] = $asset->barcode;
-      $row[] = $asset->name;
-      $row[] = $asset->brand;
-      $row[] = $asset->model;
-      $row[] = $asset->resolution;
-      $row[] = $asset->processor;
-      $row[] = $asset->ram;
-      $row[] = $asset->os;
-      $row[] = $asset->chipset;
-      $row[] = $asset->gpu;
-      $row[] = $asset->bit;
-      $row[] = $asset->screenSize;
-      $row[] = $asset->graphics;
-      $row[] = $asset->internalStorage;
-      $row[] = $asset->simSupport;
-      $row[] = $asset->arrivalDate;
-      $row[] = $asset->arrivalNotes;
-      $row[] = $asset->serial;
-      $row[] = $asset->assetType;
-      $row[] = $asset->subAsset;
-      $row[] = $asset->imei;
-      $row[] = $asset->storageAllocation;
-      $row[] = $asset->category_id;
-      $row[] = $asset->condition_id;
-			$row[] = $asset->status_id;
+		      $row[] = $asset->device_id;
+		      $row[] = $asset->barcode;
+		      $row[] = $asset->name;
+		      $row[] = $asset->brand;
+		      $row[] = $asset->model;
+		      $row[] = $asset->resolution;
+		      $row[] = $asset->processor;
+		      $row[] = $asset->ram;
+		      $row[] = $asset->os;
+		      $row[] = $asset->chipset;
+		      $row[] = $asset->gpu;
+		      $row[] = $asset->bit;
+		      $row[] = $asset->screenSize;
+		      $row[] = $asset->graphics;
+		      $row[] = $asset->internalStorage;
+		      $row[] = $asset->simSupport;
+		      $row[] = $asset->arrivalDate;
+		      $row[] = $asset->arrivalNotes;
+		      $row[] = $asset->serial;
+		      $row[] = $asset->assetType;
+		      $row[] = $asset->subAsset;
+		      $row[] = $asset->imei;
+		      $row[] = $asset->storageAllocation;
+		      $row[] = $asset->category_id;
+		      $row[] = $asset->condition_id;
+				$row[] = $asset->status_id;
 
 
 			//add html for action
@@ -80,6 +80,13 @@ class Asset extends CI_Controller {
 		//output to json format
 		echo json_encode($output);
 	}
+
+	public function ajax_log($id)
+	{
+		$data = $this->asset->get_by_id($id);
+		echo json_encode($data);
+	}
+
 
 	public function ajax_edit($id)
 	{

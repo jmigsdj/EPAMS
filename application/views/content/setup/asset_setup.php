@@ -25,8 +25,12 @@
               <br />
               <br />
               <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <style type="text/css">
+                  thead th {min-width: 150px; text-align: center;}
+                  tr td {text-align: center;}
+                </style>
                   <thead>
-                      <tr>
+                      <tr> 
                           <th>Device ID</th>
                           <th>Barcode</th>
                           <th>Name</th>
