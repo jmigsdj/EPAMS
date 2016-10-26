@@ -79,3 +79,66 @@ LEFT JOIN `status` `s` ON `s`.`id` = `a`.`status_id`
 WHERE `id` = '16'
 ERROR - 2016-10-25 09:42:14 --> DATA ID: 16
 ERROR - 2016-10-25 09:42:23 --> DATA ID: 16
+ERROR - 2016-10-25 10:22:29 --> Query error: Column 'id' in order clause is ambiguous - Invalid query: SELECT `assets`.`name`
+FROM `release`
+INNER JOIN `assets` ON `release`.`dev_id` = `assets`.`tracker_id`
+ORDER BY `id` DESC
+ LIMIT 10
+ERROR - 2016-10-25 10:27:46 --> Query error: Column 'id' in order clause is ambiguous - Invalid query: SELECT `assets`.`name`
+FROM `release`
+INNER JOIN `assets` ON `release`.`dev_id` = `assets`.`tracker_id`
+ORDER BY `id` DESC
+ LIMIT 10
+ERROR - 2016-10-25 16:53:42 --> Severity: Notice --> Undefined index: status C:\xampp\htdocs\epams\application\views\content\inventory.php 71
+ERROR - 2016-10-25 11:03:35 --> Severity: Notice --> Undefined variable: assets C:\xampp\htdocs\epams\application\controllers\Release.php 53
+ERROR - 2016-10-25 11:03:35 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\epams\application\controllers\Release.php 53
+ERROR - 2016-10-25 11:04:19 --> Severity: Notice --> Undefined variable: assets C:\xampp\htdocs\epams\application\controllers\Release.php 53
+ERROR - 2016-10-25 11:04:19 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\epams\application\controllers\Release.php 53
+ERROR - 2016-10-25 11:06:10 --> Severity: Notice --> Undefined variable: assets C:\xampp\htdocs\epams\application\controllers\Release.php 53
+ERROR - 2016-10-25 11:06:10 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\epams\application\controllers\Release.php 53
+ERROR - 2016-10-25 11:18:47 --> Query error: Column 'category_id' in order clause is ambiguous - Invalid query: SELECT `a`.*, `cat`.`id` as `category_id`, `cat`.`categName`, `con`.`id` as `condition_id`, `con`.`condition`, `s`.`id` as `status_id`, `s`.`status`
+FROM `assets` `a`
+LEFT JOIN `category` `cat` ON `cat`.`id` = `a`.`category_id`
+LEFT JOIN `condition` `con` ON `con`.`id` = `a`.`condition_id`
+LEFT JOIN `status` `s` ON `s`.`id` = `a`.`status_id`
+ORDER BY `category_id` ASC
+ LIMIT 10
+ERROR - 2016-10-25 11:27:56 --> 404 Page Not Found: Release/select_employee
+ERROR - 2016-10-25 11:30:43 --> Severity: Error --> Call to undefined method Asset_model::select_employee() C:\xampp\htdocs\epams\application\controllers\Release.php 78
+ERROR - 2016-10-25 11:30:50 --> Severity: Error --> Call to undefined method Asset_model::select_employee() C:\xampp\htdocs\epams\application\controllers\Release.php 78
+ERROR - 2016-10-25 11:32:10 --> Query error: Column 'id' in order clause is ambiguous - Invalid query: SELECT `a`.`device_id`, `a`.`name`, `a`.`model`, `a`.`resolution`, `a`.`processor`, `a`.`ram`, `a`.`os`, `a`.`gpu`, `a`.`bit`, `a`.`simSupport`, `cat`.`categName`, `con`.`condition`, `s`.`id` as `status_id`, `s`.`status`
+FROM `assets` `a`
+LEFT JOIN `category` `cat` ON `cat`.`id` = `a`.`category_id`
+LEFT JOIN `condition` `con` ON `con`.`id` = `a`.`condition_id`
+LEFT JOIN `status` `s` ON `s`.`id` = `a`.`status_id`
+ORDER BY `id` DESC
+ LIMIT 10
+ERROR - 2016-10-25 11:34:36 --> Severity: Notice --> Undefined property: stdClass::$id C:\xampp\htdocs\epams\application\controllers\Release.php 55
+ERROR - 2016-10-25 11:34:36 --> Severity: Notice --> Undefined property: Release::$asset C:\xampp\htdocs\epams\application\controllers\Release.php 68
+ERROR - 2016-10-25 11:34:36 --> Severity: Error --> Call to a member function count_all() on null C:\xampp\htdocs\epams\application\controllers\Release.php 68
+ERROR - 2016-10-25 11:35:00 --> Query error: Column 'id' in order clause is ambiguous - Invalid query: SELECT `a`.`device_id`, `a`.`name`, `a`.`model`, `a`.`resolution`, `a`.`processor`, `a`.`ram`, `a`.`os`, `a`.`gpu`, `a`.`bit`, `a`.`simSupport`, `cat`.`categName`, `con`.`condition`, `s`.`id` as `status_id`, `s`.`status`
+FROM `assets` `a`
+LEFT JOIN `category` `cat` ON `cat`.`id` = `a`.`category_id`
+LEFT JOIN `condition` `con` ON `con`.`id` = `a`.`condition_id`
+LEFT JOIN `status` `s` ON `s`.`id` = `a`.`status_id`
+ORDER BY `id` DESC
+ LIMIT 10
+ERROR - 2016-10-25 11:35:38 --> Severity: Notice --> Undefined property: stdClass::$id C:\xampp\htdocs\epams\application\controllers\Release.php 55
+ERROR - 2016-10-25 11:35:38 --> Severity: Notice --> Undefined property: Release::$asset C:\xampp\htdocs\epams\application\controllers\Release.php 68
+ERROR - 2016-10-25 11:35:38 --> Severity: Error --> Call to a member function count_all() on null C:\xampp\htdocs\epams\application\controllers\Release.php 68
+ERROR - 2016-10-25 11:37:26 --> Severity: Notice --> Undefined property: Release::$asset C:\xampp\htdocs\epams\application\controllers\Release.php 68
+ERROR - 2016-10-25 11:37:26 --> Severity: Error --> Call to a member function count_all() on null C:\xampp\htdocs\epams\application\controllers\Release.php 68
+ERROR - 2016-10-25 11:38:04 --> Severity: Notice --> Undefined property: Release::$asset C:\xampp\htdocs\epams\application\controllers\Release.php 68
+ERROR - 2016-10-25 11:38:04 --> Severity: Error --> Call to a member function count_filtered() on null C:\xampp\htdocs\epams\application\controllers\Release.php 68
+ERROR - 2016-10-25 11:38:11 --> Severity: Notice --> Undefined property: Release::$asset C:\xampp\htdocs\epams\application\controllers\Release.php 68
+ERROR - 2016-10-25 11:38:11 --> Severity: Error --> Call to a member function count_filtered() on null C:\xampp\htdocs\epams\application\controllers\Release.php 68
+ERROR - 2016-10-25 11:39:13 --> Severity: Notice --> Undefined property: Release::$asset C:\xampp\htdocs\epams\application\controllers\Release.php 68
+ERROR - 2016-10-25 11:39:13 --> Severity: Error --> Call to a member function count_all() on null C:\xampp\htdocs\epams\application\controllers\Release.php 68
+ERROR - 2016-10-25 11:39:55 --> 404 Page Not Found: Asset/select_item
+ERROR - 2016-10-25 11:39:59 --> 404 Page Not Found: Asset/select_item
+ERROR - 2016-10-25 11:40:00 --> 404 Page Not Found: Asset/select_item
+ERROR - 2016-10-25 11:40:00 --> 404 Page Not Found: Asset/select_item
+ERROR - 2016-10-25 11:40:52 --> 404 Page Not Found: Asset/select_item
+ERROR - 2016-10-25 11:41:01 --> 404 Page Not Found: Asset/select_item
+ERROR - 2016-10-25 11:41:28 --> 404 Page Not Found: Asset/select_item
+ERROR - 2016-10-25 11:41:28 --> 404 Page Not Found: Asset/select_item

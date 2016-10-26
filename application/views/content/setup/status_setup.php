@@ -3,14 +3,14 @@
     <div class="box-header with-border">
       <section class="content-header">
         <h1>
-          Category Setup
+          Status Setup
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
           <li><a href="#">Dashboard</a></li>
           <li><a href="#">Setup</a></li>
           <li><a href="#">References</a></li>
-          <li class="active"><a href="#">Category</a></li>
+          <li class="active"><a href="#">Status</a></li>
         </ol>
       </section>
       <br>
@@ -19,10 +19,10 @@
       <div class="box-body">
         <div class="row">
           <div class="container">
-              <h1 style="font-size:20pt">Categories Datatable</h1>
+              <h1 style="font-size:20pt">Status Datatable</h1>
 
               <br />
-              <button class="btn btn-success" onclick="add_category()"><i class="glyphicon glyphicon-plus"></i> Add </button>
+              <button class="btn btn-success" onclick="add_status()"><i class="glyphicon glyphicon-plus"></i> Add </button>
               <button class="btn btn-default" onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i> Reload</button>
               <br />
               <br />
@@ -43,6 +43,7 @@
   </div>
 </div>
 
+
 <script type="text/javascript">
 
 var save_method; //for save method string
@@ -59,7 +60,7 @@ $(document).ready(function() {
 
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": "<?php echo site_url('category/ajax_list')?>",
+            "url": "<?php echo site_url('status/ajax_list')?>",
             "type": "POST"
         },
 
@@ -94,17 +95,17 @@ $(document).ready(function() {
 
 
 
-function add_category()
+function add_status()
 {
     save_method = 'add';
     $('#form')[0].reset(); // reset form on modals
     $('.form-group').removeClass('has-error'); // clear error class
     $('.help-block').empty(); // clear error string
     $('#modal_form').modal('show'); // show bootstrap modal
-    $('.modal-title').text('Add Category'); // Set Title to Bootstrap modal title
+    $('.modal-title').text('Add Status'); // Set Title to Bootstrap modal title
 }
 
-function edit_category(id)
+function edit_status(id)
 {
     save_method = 'update';
     $('#form')[0].reset(); // reset form on modals
@@ -113,17 +114,17 @@ function edit_category(id)
 
     //Ajax Load data from ajax
     $.ajax({
-        url : "<?php echo site_url('category/ajax_edit/')?>/" + id,
+        url : "<?php echo site_url('status/ajax_edit/')?>/" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data)
         {
 
             $('[name="id"]').val(data.id);
-            $('[name="categName"]').val(data.categName);
+            $('[name="status"]').val(data.status);
 
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-            $('.modal-title').text('Edit Category'); // Set title to Bootstrap modal title
+            $('.modal-title').text('Edit Status'); // Set title to Bootstrap modal title
 
         },
         error: function (jqXHR, textStatus, errorThrown)
@@ -145,10 +146,11 @@ function save()
     var url;
 
     if(save_method == 'add') {
-        url = "<?php echo site_url('category/ajax_add')?>";
+        url = "<?php echo site_url('status/ajax_add')?>";
     } else {
-        url = "<?php echo site_url('category/ajax_update')?>";
+        url = "<?php echo site_url('status/ajax_update')?>";
     }
+
     // ajax adding data to database
     $.ajax({
         url : url,
@@ -187,13 +189,13 @@ function save()
     return false;
 }
 
-function delete_category(id)
+function delete_status(id)
 {
     if(confirm('Are you sure delete this data?'))
     {
         // ajax delete data to database
         $.ajax({
-            url : "<?php echo site_url('category/ajax_delete')?>/"+id,
+            url : "<?php echo site_url('status/ajax_delete')?>/"+id,
             type: "POST",
             dataType: "JSON",
             success: function(data)
@@ -201,6 +203,7 @@ function delete_category(id)
                 //if success reload ajax table
                 $('#modal_form').modal('hide');
                 reload_table();
+
                 $.notify({
         						icon:'fa fa-check',
         						message: "Successfully Deleted!"
@@ -221,22 +224,20 @@ function delete_category(id)
 
 <!-- Bootstrap modal -->
 <div class="modal fade" id="modal_form" role="dialog">
-
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3 class="modal-title">Categories Form</h3>
+                <h3 class="modal-title">Status Form</h3>
             </div>
           <form id="form" name="form" onsubmit="return save();"class="form-horizontal">
             <div class="modal-body form">
                 <input type="hidden" value="" name="id"/>
                 <div class="form-body">
                     <div class="form-group">
-                        <label class="control-label col-md-3">Categories</label>
+                        <label class="control-label col-md-3">Status</label>
                         <div class="col-md-9">
-                            <input name="categName" placeholder="Categories" class="form-control" type="text">
-                            <input type="text" value="" style="display: none;">
+                            <input name="status" placeholder="Status" class="form-control" type="text">
                             <span class="help-block"></span>
                         </div>
                     </div>
