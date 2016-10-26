@@ -70,6 +70,14 @@ class Asset_model extends CI_Model {
 		}
 	}
 
+	function _get_vanilla_datatables_query()
+	{
+
+		$this->db->from($this->table);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	function get_datatables()
 	{
 		$this->_get_datatables_query();
