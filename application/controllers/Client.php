@@ -1,42 +1,42 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Category extends CI_Controller {
+class Client extends CI_Controller {
 
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('category_model','category');
+        $this->load->model('client_model','client');
     }
 
     public function index()
     {
         $this->load->helper('url');
-        $this->load->view('content/setup/category_setup');
+        $this->load->view('content/setup/client_setup');
     }
 
     public function ajax_list()
     {
-        $list = $this->category->get_datatables();
+        $list = $this->client->get_datatables();
         $data = array();
         $no = $_POST['start'];
-        foreach ($list as $category) {
+        foreach ($list as $client) {
             $no++;
             $row = array();
-            $row[] = $category->category_name;
+            $row[] = $client->client_name;
 
 
             //add html for action
-            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_category('."'".$category->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
-                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_category('."'".$category->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_client('."'".$client->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_client('."'".$client->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
 
             $data[] = $row;
         }
 
         $output = array(
                         "draw" => $_POST['draw'],
-                        "recordsTotal" => $this->category->count_all(),
-                        "recordsFiltered" => $this->category->count_filtered(),
+                        "recordsTotal" => $this->client->count_all(),
+                        "recordsFiltered" => $this->client->count_filtered(),
                         "data" => $data,
                 );
         //output to json format
@@ -45,19 +45,20 @@ class Category extends CI_Controller {
 
     public function ajax_edit($id)
   	{
-  		$data = $this->category->get_by_id($id);
+  		$data = $this->client->get_by_id($id);
   		//$data->dob = ($data->dob == '0000-00-00') ? '' : $data->dob; // if 0000-00-00 set tu empty for datepicker compatibility
   		echo json_encode($data);
   	}
+
 
     public function ajax_add()
     {
         $this->_validate();
         $data = array(
-                'category_name' => $this->input->post('category_name')
+                'client_name' => $this->input->post('client_name')
 
             );
-        $insert = $this->category->save($data);
+        $insert = $this->client->save($data);
         echo json_encode(array("status" => TRUE));
     }
 
@@ -65,16 +66,16 @@ class Category extends CI_Controller {
     {
         $this->_validate();
         $data = array(
-                'category_name' => $this->input->post('category_name')
+                'client_name' => $this->input->post('client_name')
 
             );
-        $this->category->update(array('category_id' => $this->input->post('category_id')), $data);
+        $this->client->update(array('client_id' => $this->input->post('client_id')), $data);
         echo json_encode(array("status" => TRUE));
     }
 
     public function ajax_delete($id)
     {
-        $this->category->delete_by_id($id);
+        $this->client->delete_by_id($id);
         echo json_encode(array("status" => TRUE));
     }
 
@@ -86,10 +87,10 @@ class Category extends CI_Controller {
         $data['inputerror'] = array();
         $data['status'] = TRUE;
 
-        if($this->input->post('category_name') == '')
+        if($this->input->post('client_name') == '')
         {
-            $data['inputerror'][] = 'category_name';
-            $data['error_string'][] = 'Category is required';
+            $data['inputerror'][] = 'client_name';
+            $data['error_string'][] = 'Client is required';
             $data['status'] = FALSE;
         }
 

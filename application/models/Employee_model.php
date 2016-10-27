@@ -77,6 +77,7 @@ class Employee_model extends CI_Model {
 
 	public function get_by_id($id)
 	{
+		$this->db->join('shifts', 'employees.shift = shifts.shift_id', 'inner');
 		$this->db->from($this->table);
 		$this->db->where('id',$id);
 		$query = $this->db->get();

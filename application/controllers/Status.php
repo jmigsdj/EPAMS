@@ -23,7 +23,7 @@ class Status extends CI_Controller {
         foreach ($list as $status) {
             $no++;
             $row = array();
-            $row[] = $status->status;
+            $row[] = $status->status_name;
 
 
             //add html for action
@@ -54,7 +54,7 @@ class Status extends CI_Controller {
     {
         $this->_validate();
         $data = array(
-                'status' => $this->input->post('status')
+                'status_name' => $this->input->post('status_name')
 
             );
         $insert = $this->status->save($data);
@@ -65,10 +65,10 @@ class Status extends CI_Controller {
     {
         $this->_validate();
         $data = array(
-                'status' => $this->input->post('status')
+                'status_name' => $this->input->post('status_name')
 
             );
-        $this->status->update(array('id' => $this->input->post('id')), $data);
+        $this->status->update(array('status_id' => $this->input->post('status_id')), $data);
         echo json_encode(array("status" => TRUE));
     }
 
@@ -86,9 +86,9 @@ class Status extends CI_Controller {
         $data['inputerror'] = array();
         $data['status'] = TRUE;
 
-        if($this->input->post('status') == '')
+        if($this->input->post('status_name') == '')
         {
-            $data['inputerror'][] = 'status';
+            $data['inputerror'][] = 'status_name';
             $data['error_string'][] = 'Status is required';
             $data['status'] = FALSE;
         }

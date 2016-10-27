@@ -208,9 +208,9 @@ $.ajax({
         $('[name="subAsset"]').val(data.subAsset);
         $('[name="imei"]').val(data.imei);
         $('[name="storageAllocation"]').val(data.storageAllocation);
-        $('[name="category_id"]').select2('data',{id:data.category_id,text:data.categName});
-        $('[name="condition_id"]').select2('data',{id:data.condition_id,text:data.condition});
-        $('[name="status_id"]').select2('data',{id:data.status_id,text:data.status});
+        $('[name="category_id"]').select2('data',{id:data.category_id,text:data.category_name});
+        $('[name="condition_id"]').select2('data',{id:data.condition_id,text:data.condition_name});
+        $('[name="status_id"]').select2('data',{id:data.status_id,text:data.status_name});
         $('[name="main_id"]').val(data.id);
         $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
         $('.modal-title').text('Edit Asset'); // Set title to Bootstrap modal title

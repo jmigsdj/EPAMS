@@ -19,16 +19,16 @@ class Asset_model extends CI_Model {
 
 		//$this->db->select('a.*, a.id, cat.*, cat.id AS category_id, con.*, con.id AS condition_id');
 		$this->db->select('a.*,
-	cat.id as category_id,
-  cat.categName,
-	con.id as condition_id,
-  con.condition,
-	s.id as status_id,
-  s.status');
+			cat.category_id,
+		  cat.category_name,
+			con.condition_id,
+		  con.condition_name,
+			s.status_id,
+		  s.status_name');
 
-		$this->db->join('category cat', 'cat.id = a.category_id', 'left');
-		$this->db->join('condition con', 'con.id = a.condition_id', 'left');
-		$this->db->join('status s', 's.id = a.status_id', 'left');
+		$this->db->join('category cat', 'cat.category_id = a.category_id', 'left');
+		$this->db->join('condition con', 'con.condition_id = a.condition_id', 'left');
+		$this->db->join('status s', 's.status_id = a.status_id', 'left');
 		//$fetch = $this->db->get('assets a');
 		//$row = $fetch->result_array();
 		//print_r($this->db->last_query());
@@ -95,16 +95,16 @@ class Asset_model extends CI_Model {
 	public function get_by_id($id)
 	{
 		$this->db->select('a.*,
-	cat.id as category_id,
-  cat.categName,
-	con.id as condition_id,
-  con.condition,
-	s.id as status_id,
-  s.status');
+			cat.category_id,
+		  cat.category_name,
+			con.condition_id,
+		  con.condition_name,
+			s.status_id,
+		  s.status_name');
 		$this->db->from($this->table);
-		$this->db->join('category cat', 'cat.id = a.category_id', 'left');
-		$this->db->join('condition con', 'con.id = a.condition_id', 'left');
-		$this->db->join('status s', 's.id = a.status_id', 'left');
+		$this->db->join('category cat', 'cat.category_id = a.category_id', 'left');
+		$this->db->join('condition con', 'con.condition_id = a.condition_id', 'left');
+		$this->db->join('status s', 's.status_id = a.status_id', 'left');
 		$this->db->where('a.id',$id);
 		$query = $this->db->get();
 
@@ -129,7 +129,7 @@ class Asset_model extends CI_Model {
 		$this->db->delete($this->table);
 	}
 	public function select_category($id){
-			$this->db->like('categName',$id);
+			$this->db->like('category_name',$id);
 			$fetch = $this->db->get("category");
 			$row = $fetch->result_array();
 			//print_r($this->db->last_query());
@@ -137,7 +137,7 @@ class Asset_model extends CI_Model {
 	}
 
 	public function select_condition($id){
-			$this->db->like('condition',$id);
+			$this->db->like('condition_name',$id);
 			$fetch = $this->db->get("condition");
 			$row = $fetch->result_array();
 			//print_r($this->db->last_query());
@@ -145,7 +145,7 @@ class Asset_model extends CI_Model {
 	}
 
 	public function select_status($id){
-			$this->db->like('status',$id);
+			$this->db->like('status_name',$id);
 			$fetch = $this->db->get("status");
 			$row = $fetch->result_array();
 			//print_r($this->db->last_query());

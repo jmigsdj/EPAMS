@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Category_model extends CI_Model {
+class Client_model extends CI_Model {
 
-    var $table = 'category';
-    var $column_order = array('category_name',null); //set column field database for datatable orderable
-    var $column_search = array('category_name'); //set column field database for datatable searchable just firstname , lastname , address are searchable
+    var $table = 'clients';
+    var $column_order = array('client_name',null); //set column field database for datatable orderable
+    var $column_search = array('client_name'); //set column field database for datatable searchable just firstname , lastname , address are searchable
     var $order = array('id' => 'desc'); // default order
 
     public function __construct()
@@ -16,7 +16,7 @@ class Category_model extends CI_Model {
 
     private function _get_datatables_query()
     {
-        $this->db->select('category.category_id as id, category.category_name');
+        $this->db->select('clients.client_id as id, clients.client_name');
         $this->db->from($this->table);
 
         $i = 0;
@@ -78,7 +78,7 @@ class Category_model extends CI_Model {
     public function get_by_id($id)
     {
         $this->db->from($this->table);
-        $this->db->where('category_id',$id);
+        $this->db->where('client_id',$id);
         $query = $this->db->get();
 
         return $query->row();
@@ -98,7 +98,7 @@ class Category_model extends CI_Model {
 
     public function delete_by_id($id)
     {
-        $this->db->where('category_id', $id);
+        $this->db->where('client_id', $id);
         $this->db->delete($this->table);
     }
 

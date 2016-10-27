@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Condition_model extends CI_Model {
 
     var $table = 'condition';
-    var $column_order = array('condition',null); //set column field database for datatable orderable
-    var $column_search = array('condition'); //set column field database for datatable searchable just firstname , lastname , address are searchable
+    var $column_order = array('condition_name',null); //set column field database for datatable orderable
+    var $column_search = array('condition_name'); //set column field database for datatable searchable just firstname , lastname , address are searchable
     var $order = array('id' => 'desc'); // default order
 
     public function __construct()
@@ -16,7 +16,7 @@ class Condition_model extends CI_Model {
 
     private function _get_datatables_query()
     {
-
+        $this->db->select('condition.condition_id as id, condition.condition_name');
         $this->db->from($this->table);
 
         $i = 0;
@@ -78,7 +78,7 @@ class Condition_model extends CI_Model {
     public function get_by_id($id)
     {
         $this->db->from($this->table);
-        $this->db->where('id',$id);
+        $this->db->where('condition_id',$id);
         $query = $this->db->get();
 
         return $query->row();
@@ -98,7 +98,7 @@ class Condition_model extends CI_Model {
 
     public function delete_by_id($id)
     {
-        $this->db->where('id', $id);
+        $this->db->where('condition_id', $id);
         $this->db->delete($this->table);
     }
 

@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Status_model extends CI_Model {
 
     var $table = 'status';
-    var $column_order = array('status',null); //set column field database for datatable orderable
-    var $column_search = array('status'); //set column field database for datatable searchable just firstname , lastname , address are searchable
+    var $column_order = array('status_name',null); //set column field database for datatable orderable
+    var $column_search = array('status_name'); //set column field database for datatable searchable just firstname , lastname , address are searchable
     var $order = array('id' => 'desc'); // default order
 
     public function __construct()
@@ -16,7 +16,7 @@ class Status_model extends CI_Model {
 
     private function _get_datatables_query()
     {
-
+        $this->db->select('status.status_id as id, status.status_name');
         $this->db->from($this->table);
 
         $i = 0;
@@ -78,7 +78,7 @@ class Status_model extends CI_Model {
     public function get_by_id($id)
     {
         $this->db->from($this->table);
-        $this->db->where('id',$id);
+        $this->db->where('status_id',$id);
         $query = $this->db->get();
 
         return $query->row();
@@ -98,7 +98,7 @@ class Status_model extends CI_Model {
 
     public function delete_by_id($id)
     {
-        $this->db->where('id', $id);
+        $this->db->where('status_id', $id);
         $this->db->delete($this->table);
     }
 

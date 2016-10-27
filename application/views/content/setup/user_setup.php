@@ -27,8 +27,8 @@
               <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
                   <thead>
                       <tr>
-                          <th>Username</th>
-                          <th>Usertype</th>
+                          <th>User Name</th>
+                          <th>Access Level</th>
                           <th style="width:125px;">Action</th>
                       </tr>
                   </thead>
@@ -118,7 +118,7 @@ function edit_user(id)
         success: function(data)
         {
 
-            $('[name="id"]').val(data.id);
+            $('[name="user_id"]').val(data.user_id);
             $('[name="username"]').val(data.username);
 
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
@@ -213,9 +213,21 @@ function delete_user(id)
                 alert('Error deleting data');
             }
         });
-
     }
 }
+
+$('#usertype_id').select2({
+  ajax:{
+    url:'<?=base_url()?>/user/select_usertype',
+    dataType: 'json',
+    data: function (name, page) {
+          return { name: name };
+      },
+    results: function (data,page){
+      return {results: data};
+    }
+  }
+});
 
 </script>
 
@@ -229,7 +241,7 @@ function delete_user(id)
             </div>
             <div class="modal-body form">
                 <form action="#" id="form" class="form-horizontal">
-                    <input type="hidden" value="" name="id"/>
+                    <input type="hidden" value="" name="user_id"/>
                     <div class="form-body">
                         <div class="form-group">
                             <label class="control-label col-md-3">Username</label>
@@ -248,14 +260,10 @@ function delete_user(id)
                         </div>
 
                         <div class="form-group">
-                            <label for="sel1" class="control-label col-md-3">Usertype</label>
+                            <label for="sel1" class="control-label col-md-3">Access Level</label>
                             <div class="col-md-9">
-                                <select class="form-control" id="sel1" name="usertype">
-                                  <option value="1">Administrator</option>
-                                  <option value="2">RM</option>
-                                  <option value="3">Tester</option>
-                                </select>
-                            </div>
+                                <input type="hidden" name="usertype_id" id="usertype_id" class="form-control">
+                          </div>
                         </div>
                     </div>
                 </form>

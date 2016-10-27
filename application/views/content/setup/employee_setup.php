@@ -140,6 +140,7 @@ $.ajax({
         $('[name="empId"]').val(data.empId);
         $('[name="firstName"]').val(data.firstName);
         $('[name="lastName"]').val(data.lastName);
+        $('[name="shift_id"]').select2('data',{id:data.shift_id,text:data.shift_name});
         $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
         $('.modal-title').text('Edit Employee'); // Set title to Bootstrap modal title
 

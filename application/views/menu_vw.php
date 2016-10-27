@@ -24,6 +24,7 @@
                           <li><a href="javascript:void(0);" onclick="loader('condition','index');"><i class="fa fa-cog"></i> <span>Condition Setup</span></a></li>
                           <li><a href="javascript:void(0);" onclick="loader('status','index');"><i class="fa fa-cog"></i> <span>Status Setup</span></a></li>
                           <li><a href="javascript:void(0);" onclick="loader('shift','index');"><i class="fa fa-cog"></i> <span>Shift Setup</span></a></li>
+                          <li><a href="javascript:void(0);" onclick="loader('client','index');"><i class="fa fa-cog"></i> <span>Client Setup</span></a></li>
                       </ul>
                     </li>
                     <li><a href="javascript:void(0);" onclick="loader('asset','index');"><i class="fa fa-hand-o-right"></i> <span>Assets Setup</span></a></li>

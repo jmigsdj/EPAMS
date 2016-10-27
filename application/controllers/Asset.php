@@ -59,9 +59,9 @@ class Asset extends CI_Controller {
 			$row[] = $asset->subAsset;
 			$row[] = $asset->imei;
 			$row[] = $asset->storageAllocation;
-			$row[] = $asset->categName;
-			$row[] = $asset->condition;
-			$row[] = $asset->status;
+			$row[] = $asset->category_name;
+			$row[] = $asset->condition_name;
+			$row[] = $asset->status_name;
 
 
 			//add html for action
@@ -373,7 +373,7 @@ class Asset extends CI_Controller {
 		$got_result='';
 		if(!empty($result)){
 			foreach ($result as $key) {
-				$got_result[]=array("id"=>$key['id'],"text"=>$key['categName']);
+				$got_result[]=array("id"=>$key['category_id'],"text"=>$key['category_name']);
 			}
 		}
 		//print_r($got_result);
@@ -386,7 +386,7 @@ class Asset extends CI_Controller {
 		$got_result='';
 		if(!empty($result)){
 			foreach ($result as $key) {
-				$got_result[]=array("id"=>$key['id'],"text"=>$key['condition']);
+				$got_result[]=array("id"=>$key['condition_id'],"text"=>$key['condition_name']);
 			}
 		}
 		//print_r($got_result);
@@ -399,7 +399,7 @@ class Asset extends CI_Controller {
 		$got_result='';
 		if(!empty($result)){
 			foreach ($result as $key) {
-				$got_result[]=array("id"=>$key['id'],"text"=>$key['status']);
+				$got_result[]=array("id"=>$key['status_id'],"text"=>$key['status_name']);
 			}
 		}
 		//print_r($got_result);

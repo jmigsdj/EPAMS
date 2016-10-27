@@ -65,43 +65,42 @@ insert  into `assets`(`id`,`device_id`,`barcode`,`name`,`brand`,`model`,`resolut
 DROP TABLE IF EXISTS `category`;
 
 CREATE TABLE `category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `categName` varchar(100) DEFAULT NULL COMMENT 'category name',
-  `tracker_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+  `category_id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(100) DEFAULT NULL COMMENT 'category name',
+  PRIMARY KEY (`category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 /*Data for the table `category` */
 
-insert  into `category`(`id`,`categName`,`tracker_id`) values (1,'Android',0),(2,'Phone',0),(3,'Tablet',0),(4,'Adapter',0),(5,'Cord',0),(6,'Extension Cord',0),(27,'Watch Ios',0);
+insert  into `category`(`category_id`,`category_name`) values (1,'Android'),(2,'Phone'),(3,'Tablet'),(4,'Adapter'),(5,'Cord'),(6,'Extension Cord'),(27,'Watch Ios');
 
 /*Table structure for table `clients` */
 
 DROP TABLE IF EXISTS `clients`;
 
 CREATE TABLE `clients` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `clientName` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `client_id` int(11) NOT NULL AUTO_INCREMENT,
+  `client_name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`client_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `clients` */
 
-insert  into `clients`(`id`,`clientName`) values (1,'VainGlory'),(2,'Boboboi'),(3,'Pokemon');
+insert  into `clients`(`client_id`,`client_name`) values (1,'VainGlory'),(2,'Boboboi'),(3,'Pokemon');
 
 /*Table structure for table `condition` */
 
 DROP TABLE IF EXISTS `condition`;
 
 CREATE TABLE `condition` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `condition` varchar(100) DEFAULT NULL COMMENT 'condition status',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+  `condition_id` int(11) NOT NULL AUTO_INCREMENT,
+  `condition_name` varchar(100) DEFAULT NULL COMMENT 'condition status',
+  PRIMARY KEY (`condition_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 /*Data for the table `condition` */
 
-insert  into `condition`(`id`,`condition`) values (1,'Bad'),(2,'Broken'),(3,'Good'),(7,'New'),(8,'Old'),(9,'Shiny');
+insert  into `condition`(`condition_id`,`condition_name`) values (1,'Bad'),(2,'Broken'),(3,'Good'),(7,'New'),(8,'Old'),(9,'Shiny');
 
 /*Table structure for table `employees` */
 
@@ -120,11 +119,11 @@ CREATE TABLE `employees` (
   `tracker_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `shift` (`shift`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 /*Data for the table `employees` */
 
-insert  into `employees`(`id`,`empId`,`firstName`,`lastName`,`created_by`,`created_date`,`modified_by`,`modified_date`,`shift`,`tracker_id`) values (3,'2013-02113','Doe','DJ',NULL,NULL,NULL,NULL,2,0),(4,'2013-02613','Fitzpatrick','Foo',NULL,NULL,NULL,NULL,3,0),(5,'2013-02113','Flynn','Bar',NULL,NULL,NULL,NULL,4,0),(6,'1209-71487','Miguel','De Jesus',NULL,NULL,NULL,NULL,1,0),(7,'12487','Denise','Ros',NULL,NULL,NULL,NULL,4,NULL),(10,'test','ttest','test',NULL,NULL,NULL,NULL,1,NULL);
+insert  into `employees`(`id`,`empId`,`firstName`,`lastName`,`created_by`,`created_date`,`modified_by`,`modified_date`,`shift`,`tracker_id`) values (3,'2013-02113','Doe','DJ',NULL,NULL,NULL,NULL,2,0),(4,'2013-02613','Fitzpatrick','Foo',NULL,NULL,NULL,NULL,3,0),(5,'2013-02113','Flynn','Bar',NULL,NULL,NULL,NULL,4,0),(6,'1209-71487','Miguel','De Jesus',NULL,NULL,NULL,NULL,1,0),(7,'12487','Denise','Ros',NULL,NULL,NULL,NULL,4,NULL);
 
 /*Table structure for table `history` */
 
@@ -157,42 +156,40 @@ CREATE TABLE `release` (
 
 /*Data for the table `release` */
 
-insert  into `release`(`id`,`emp_id`,`dev_id`,`release_id`) values (1,0,0,0);
-
 /*Table structure for table `shifts` */
 
 DROP TABLE IF EXISTS `shifts`;
 
 CREATE TABLE `shifts` (
-  `shift_id` int(11) NOT NULL,
-  `shift_name` varchar(255) DEFAULT NULL,
+  `shift_id` int(11) NOT NULL AUTO_INCREMENT,
+  `shift_name` varchar(99) DEFAULT NULL,
   PRIMARY KEY (`shift_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 /*Data for the table `shifts` */
 
-insert  into `shifts`(`shift_id`,`shift_name`) values (1,'1st Shift'),(2,'2nd Shift'),(3,'3rd Shift'),(4,'4th Shift');
+insert  into `shifts`(`shift_id`,`shift_name`) values (1,'1st Shift'),(2,'2nd Shift'),(3,'3rd Shift'),(4,'4th Shift'),(5,'GY Shift');
 
 /*Table structure for table `status` */
 
 DROP TABLE IF EXISTS `status`;
 
 CREATE TABLE `status` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `status` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  `status_id` int(11) NOT NULL AUTO_INCREMENT,
+  `status_name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`status_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 /*Data for the table `status` */
 
-insert  into `status`(`id`,`status`) values (1,'Borrowed'),(2,'Returned'),(3,'On Hand'),(4,'On Shelf');
+insert  into `status`(`status_id`,`status_name`) values (1,'Borrowed'),(2,'Returned'),(3,'On Hand'),(4,'On Shelf'),(8,'Available');
 
 /*Table structure for table `users` */
 
 DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `employee_id` int(11) DEFAULT NULL,
   `username` varchar(100) DEFAULT NULL,
   `password` text NOT NULL,
@@ -201,27 +198,27 @@ CREATE TABLE `users` (
   `usertype_id` int(11) DEFAULT NULL COMMENT '1-admin, 2-rm, 2-member',
   `modified_by` int(11) DEFAULT NULL,
   `modified_date` date DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`user_id`),
   KEY `usertype_id` (`usertype_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`employee_id`,`username`,`password`,`created_by`,`created_date`,`usertype_id`,`modified_by`,`modified_date`) values (4,NULL,'RM','098f6bcd4621d373cade4e832627b4f6',NULL,NULL,2,NULL,NULL),(6,NULL,'Admin','21232f297a57a5a743894a0e4a801fc3',NULL,NULL,1,NULL,NULL),(7,NULL,'Tester','1a1dc91c907325c69271ddf0c944bc72',NULL,NULL,3,NULL,NULL);
+insert  into `users`(`user_id`,`employee_id`,`username`,`password`,`created_by`,`created_date`,`usertype_id`,`modified_by`,`modified_date`) values (4,NULL,'RM','098f6bcd4621d373cade4e832627b4f6',NULL,NULL,2,NULL,NULL),(6,NULL,'Admin','21232f297a57a5a743894a0e4a801fc3',NULL,NULL,1,NULL,NULL),(7,NULL,'Tester','1a1dc91c907325c69271ddf0c944bc72',NULL,NULL,3,NULL,NULL);
 
 /*Table structure for table `usertypes` */
 
 DROP TABLE IF EXISTS `usertypes`;
 
 CREATE TABLE `usertypes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `usertype` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `usertype_id` int(11) NOT NULL AUTO_INCREMENT,
+  `usertype_name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`usertype_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `usertypes` */
 
-insert  into `usertypes`(`id`,`usertype`) values (1,'Admin'),(2,'RM'),(3,'Tester');
+insert  into `usertypes`(`usertype_id`,`usertype_name`) values (1,'Admin'),(2,'RM'),(3,'Tester');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
