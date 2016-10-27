@@ -24,13 +24,13 @@ class User extends CI_Controller {
             $no++;
             $row = array();
             $row[] = $user->username;
-            $row[] = $user->usertype;
+            $row[] = $user->usertype_name;
             // $row[] = $user->users_id;
 
 
             //add html for action
-            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_user('."'".$user->users_id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
-                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_user('."'".$user->users_id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
 
             $data[] = $row;
         }
@@ -58,7 +58,7 @@ class User extends CI_Controller {
         $data = array(
                 'username' => $this->input->post('username'),
                 'password' => md5($this->input->post('password')),
-                'usertype_id' => $this->input->post('usertype'),
+                'usertype_id' => $this->input->post('usertype_id'),
 
             );
         $insert = $this->user->save($data);
@@ -70,9 +70,10 @@ class User extends CI_Controller {
         $this->_validate();
         $data = array(
                 'username' => $this->input->post('username'),
-                'usertype_id' => $this->input->post('usertype')
+                'password' => md5($this->input->post('password')),
+                'usertype_id' => $this->input->post('usertype_id')
             );
-        $this->user->update(array('id' => $this->input->post('id')), $data);
+        $this->user->update(array('user_id' => $this->input->post('user_id')), $data);
         echo json_encode(array("status" => TRUE));
     }
 
@@ -104,13 +105,12 @@ class User extends CI_Controller {
             $data['status'] = FALSE;
         }
 
-        if($this->input->post('usertype') == '----')
+        if($this->input->post('usertype_id') == '')
         {
-            $data['inputerror'][] = 'usertype';
+            $data['inputerror'][] = 'usertype_id';
             $data['error_string'][] = 'Usertype is required';
             $data['status'] = FALSE;
         }
-
 
 
         if($data['status'] === FALSE)
@@ -120,4 +120,17 @@ class User extends CI_Controller {
         }
     }
 
+
+    public function select_usertype(){
+      $id = $this->input->get('name',true);
+      $result = $this->user->select_usertype($id);
+      $got_result='';
+      if(!empty($result)){
+        foreach ($result as $key) {
+          $got_result[]=array("id"=>$key['usertype_id'],"text"=>$key['usertype_name']);
+        }
+      }
+      //print_r($got_result);
+      echo json_encode($got_result);
+    }
 }

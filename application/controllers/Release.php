@@ -33,7 +33,7 @@ class Release extends CI_Controller {
 
 	public function ajax_list_asset()
 	{
-		$list = $this->asset->_get_vanilla_datatables_query();
+		$list = $this->asset->get_vanilla_datatables();
 		$assets = array();
 		foreach ($list as $asset) {
       			$assets[] =  array('device_id' => ($asset->device_id), 'device_name' => ($asset->name));
@@ -45,7 +45,7 @@ class Release extends CI_Controller {
 
 	public function ajax_list_user()
 	{
-		$list = $this->employee->_get_vanilla_datatables_query();
+		$list = $this->employee->get_vanilla_datatables();
 		$users = array();
 		foreach ($list as $employee) {
       			$employees[] =  array('user_id' => ($employee->empId), 'user_name' => ($employee->lastName) . ", " . ($employee->firstName));
@@ -62,7 +62,7 @@ class Release extends CI_Controller {
 	      	'dev_id' => $this->input->post('select-item'),
 	      	'emp_id' => $this->input->post('select-user'),
 	      	'release_date' => $this->input->post('release-date'),
-	      	'status' => $this->input->post('Borrowed')
+	      	'status' => 'Borrowed'
 		);
 
 		// log_message('error', json_encode($data));
@@ -131,6 +131,12 @@ class Release extends CI_Controller {
 		log_message('error', json_encode($data));
 
 		$this->release->update($data['release_id'], $data);
+		echo json_encode(array("status" => TRUE));
+	}
+
+	public function ajax_delete($id)
+	{
+		$this->release->delete_by_id($id);
 		echo json_encode(array("status" => TRUE));
 	}
 

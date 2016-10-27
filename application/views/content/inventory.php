@@ -64,8 +64,8 @@
                         <td><?=$inv_item['gpu'] ?></td>
                         <td><?=$inv_item['bit'] ?></td>
                         <td><?=$inv_item['simSupport'] ?></td>
-                        <td><?=$inv_item['categName'] ?></td>
-                        <td><?=$inv_item['condition'] ?></td>
+                        <td><?=$inv_item['category_name'] ?></td>
+                        <td><?=$inv_item['condition_name'] ?></td>
                       </tr>
                     <?php endforeach; ?>
                   </tbody>

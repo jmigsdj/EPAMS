@@ -119,8 +119,8 @@ function edit_condition(id)
         success: function(data)
         {
 
-            $('[name="id"]').val(data.id);
-            $('[name="condition"]').val(data.condition);
+            $('[name="condition_id"]').val(data.condition_id);
+            $('[name="condition_name"]').val(data.condition_name);
 
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit Condition'); // Set title to Bootstrap modal title
@@ -231,12 +231,12 @@ function delete_condition(id)
             </div>
           <form id="form" onsubmit="return save();"class="form-horizontal">
             <div class="modal-body form">
-                    <input type="hidden" value="" name="id"/>
+                    <input type="hidden" value="" name="condition_id"/>
                     <div class="form-body">
                         <div class="form-group">
                             <label class="control-label col-md-3">Condition Name</label>
                             <div class="col-md-9">
-                                <input name="condition" placeholder="Condition" class="form-control" type="text">
+                                <input name="condition_name" placeholder="Condition" class="form-control" type="text">
                                 <input type="text" value="" style="display: none;">
                                 <span class="help-block"></span>
                             </div>

@@ -3,9 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Release_model extends CI_Model {
 
-	var $table = 'release_log';
-	var $column_order = array('release_id', 'name', 'status', 'release_date'); //set column field database for datatable orderable
-	var $column_search = array('release_id', 'name', 'status', 'release_date'); //set column field database for datatable searchable just firstname , lastname , address are searchable
+	var $table = 'release_logs';
+	var $column_order = array('release_id', 'name', 'status', 'release_date', 'return_date'); //set column field database for datatable orderable
+	var $column_search = array('release_id', 'name', 'status', 'release_date', 'return_date'); //set column field database for datatable searchable just firstname , lastname , address are searchable
 	var $order = array('release_id' => 'desc'); // default order
 
 	public function __construct()
@@ -17,7 +17,7 @@ class Release_model extends CI_Model {
 	private function _get_datatables_query()
 	{
 
-		$this->db->from($this->table)->join('employees', 'release_log.emp_id = employees.empId','inner')->join('assets', 'release_log.dev_id = assets.device_id','inner');
+		$this->db->from($this->table)->join('employees', 'release_logs.emp_id = employees.empId','inner')->join('assets', 'release_logs.dev_id = assets.device_id','inner');
 
         // $this->db->select('employees.*, users.id AS users_id, usertypes.*, usertypes.id AS usertypes_id');
         // $this->db->select('assets.*, users.id AS users_id, usertypes.*, usertypes.id AS usertypes_id');
@@ -85,7 +85,7 @@ class Release_model extends CI_Model {
 	public function get_by_id($id)
 	{	
 
-		$this->db->from($this->table)->join('employees', 'release_log.emp_id = employees.empId','inner')->join('assets', 'release_log.dev_id = assets.device_id','inner')->where('release_id',$id);
+		$this->db->from($this->table)->join('employees', 'release_logs.emp_id = employees.empId','inner')->join('assets', 'release_logs.dev_id = assets.device_id','inner')->where('release_id',$id);
 		$query = $this->db->get();
 
 		return $query->row();
@@ -99,15 +99,10 @@ class Release_model extends CI_Model {
 
 	public function update($where, $data)
 	{
-		$this->db->update($this->table, $data, $where);
+		$this->db->replace($this->table, $data, $where);
 		return $this->db->affected_rows();
 	}
 
-	public function delete_by_id($id)
-	{
-		$this->db->where('id', $id);
-		$this->db->delete($this->table);
-	}
 	public function delete_by_id($id)
     {
         $this->db->where('release_id', $id);

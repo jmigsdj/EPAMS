@@ -140,6 +140,7 @@ $.ajax({
         $('[name="empId"]').val(data.empId);
         $('[name="firstName"]').val(data.firstName);
         $('[name="lastName"]').val(data.lastName);
+        $('[name="shift_id"]').select2('data',{id:data.shift_id,text:data.shift_name});
         $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
         $('.modal-title').text('Edit Employee'); // Set title to Bootstrap modal title
 
@@ -234,9 +235,21 @@ if(confirm('Are you sure delete this data?'))
             alert('Error deleting data');
         }
     });
+  }
+}
 
-}
-}
+$('#shift_id').select2({
+  ajax:{
+    url:'<?=base_url()?>/employee/select_shift',
+    dataType: 'json',
+    data: function (name, page) {
+          return { name: name };
+      },
+    results: function (data,page){
+      return {results: data};
+    }
+  }
+});
 
 </script>
 
@@ -276,13 +289,7 @@ if(confirm('Are you sure delete this data?'))
                     <div class="form-group">
                         <label for="sel1" class="control-label col-md-3">Shift</label>
                         <div class="col-md-9">
-                            <select class="form-control" id="sel1" name="shift_id">
-                              <option>---- SELECT SHIFT ----</option>
-                              <option value="1">1st Shift</option>
-                              <option value="2">2nd Shift</option>
-                              <option value="3">3rd Shift</option>
-                              <option value="4">4th Shift</option>
-                            </select>
+                            <input type="hidden" name="shift_id" id="shift_id" class="form-control">
                       </div>
                     </div>
                 </div>

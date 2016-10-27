@@ -9,7 +9,7 @@
 							<div class="row">
 								<div class="center-block">
 									<img class="profile-img"
-										src="<?=base_url()?>media/img/epLogo.png" alt="">
+										src="<?=base_url()?>media/comp_logo/epLogo.png" alt="">
 								</div>
 							</div>
 							<div class="row">

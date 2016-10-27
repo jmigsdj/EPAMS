@@ -35,14 +35,14 @@ class Panel_model extends MY_Model {
 				a.`gpu`,
 				a.`bit`,
 				a.`simSupport`,
-				cat.`categName`,
-				con.`condition`
+				cat.`category_name`,
+				con.`condition_name`
 			FROM
 				`assets` a
 			LEFT JOIN `category` cat
-				ON cat.`id` = a.`category_id`
+				ON cat.`category_id` = a.`category_id`
 			LEFT JOIN `condition` con
-				ON con.`id` = a.`condition_id` ";
+				ON con.`condition_id` = a.`condition_id` ";
 		$fetch=$this->db->query($query);
 		$row = $fetch->result_array();
 		return $row;

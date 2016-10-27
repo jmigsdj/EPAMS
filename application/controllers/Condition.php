@@ -23,7 +23,7 @@ class Condition extends CI_Controller {
         foreach ($list as $condition) {
             $no++;
             $row = array();
-            $row[] = $condition->condition;
+            $row[] = $condition->condition_name;
 
 
             //add html for action
@@ -55,7 +55,7 @@ class Condition extends CI_Controller {
     {
         $this->_validate();
         $data = array(
-                'condition' => $this->input->post('condition')
+                'condition_name' => $this->input->post('condition_name')
 
             );
         $insert = $this->condition->save($data);
@@ -66,10 +66,10 @@ class Condition extends CI_Controller {
     {
         $this->_validate();
         $data = array(
-                'condition' => $this->input->post('condition')
+                'condition_name' => $this->input->post('condition_name')
 
             );
-        $this->condition->update(array('id' => $this->input->post('id')), $data);
+        $this->condition->update(array('condition_id' => $this->input->post('condition_id')), $data);
         echo json_encode(array("status" => TRUE));
     }
 
@@ -87,9 +87,9 @@ class Condition extends CI_Controller {
         $data['inputerror'] = array();
         $data['status'] = TRUE;
 
-        if($this->input->post('condition') == '')
+        if($this->input->post('condition_name') == '')
         {
-            $data['inputerror'][] = 'condition';
+            $data['inputerror'][] = 'condition_name';
             $data['error_string'][] = 'Condition is required';
             $data['status'] = FALSE;
         }

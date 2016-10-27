@@ -161,14 +161,14 @@
                         <div class="form-group">
                           <label class="control-label col-md-3">Release Date</label>
                           <div class="col-md-9">
-                               <input type="text" name="modal-release-date" class="form-control datepicker">
+                               <input type="text" name="modal-release-date" class="form-control datepicker modal-release-date">
                               <span class="help-block"></span>
                           </div>
                         </div>
                         <div class="form-group">
                           <label class="control-label col-md-3">Return Date</label>
                           <div class="col-md-9">
-                               <input type="text" name="modal-return-date" class="form-control datepicker">
+                               <input type="text" name="modal-return-date" class="form-control datepicker modal-return-date">
                               <span class="help-block"></span>
                           </div>
                         </div>
@@ -186,6 +186,7 @@
                 </form>
             </div>
             <div class="modal-footer">
+                <!-- <button type="submit" id="btnSave" class="btn btn-primary">Save</button> -->
                 <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
             </div>
@@ -271,8 +272,10 @@ $(document).ready(function() {
         data: $('#form-potchi').serializeArray(),
         dataType: "JSON",
         success: function(data)
-        {
-            alert('Data saved, will do tables below this one next. xD')
+        { 
+
+            reload_table();
+            // alert('Data saved, will do tables below this one next. xD')
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
@@ -297,6 +300,7 @@ $(document).ready(function() {
         {
 
             $('.item-id').val(data.release_id);
+
             $(".modal-select-item option").each(function() {
               $(this).removeAttr('selected');
               if($(this).val() == data.device_id ) {
@@ -377,11 +381,42 @@ $(document).ready(function() {
 
         }
     });
+
+    return false;
   }
 
   function reload_table() {
     table.ajax.reload(null,false); //reload datatable ajax
   }
+
+  function delete_asset(id) {
+  if(confirm('Are you sure delete this data?'))
+  {
+      // ajax delete data to database
+      $.ajax({
+          url : "<?php echo site_url('release/ajax_delete')?>/"+id,
+          type: "POST",
+          dataType: "JSON",
+          success: function(data)
+          {
+              //if success reload ajax table
+              $('#modal_form').modal('hide');
+              reload_table();
+              $.notify({
+                  icon:'fa fa-check',
+                  message: "Successfully Deleted!"
+                },{
+                  type: 'success'
+              });
+          },
+          error: function (jqXHR, textStatus, errorThrown)
+          {
+              alert('Error deleting data');
+          }
+      });
+
+    }
+}
 </script>
 </body>
 

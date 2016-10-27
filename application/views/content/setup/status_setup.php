@@ -120,8 +120,8 @@ function edit_status(id)
         success: function(data)
         {
 
-            $('[name="id"]').val(data.id);
-            $('[name="status"]').val(data.status);
+            $('[name="status_id"]').val(data.status_id);
+            $('[name="status_name"]').val(data.status_name);
 
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit Status'); // Set title to Bootstrap modal title
@@ -232,12 +232,12 @@ function delete_status(id)
             </div>
           <form id="form" name="form" onsubmit="return save();"class="form-horizontal">
             <div class="modal-body form">
-                    <input type="hidden" value="" name="id"/>
+                    <input type="hidden" value="" name="status_id"/>
                     <div class="form-body">
                         <div class="form-group">
                             <label class="control-label col-md-3">Status Name</label>
                             <div class="col-md-9">
-                                <input name="status" placeholder="Status" class="form-control" type="text">
+                                <input name="status_name" placeholder="Status" class="form-control" type="text">
                                 <span class="help-block"></span>
                             </div>
                         </div>
