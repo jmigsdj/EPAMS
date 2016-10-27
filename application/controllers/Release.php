@@ -8,6 +8,9 @@ class Release extends CI_Controller {
 		parent::__construct();
 		$this->load->library('session');
 		$this->load->model('release_model','release');
+		$this->load->model('asset_model','asset');
+		$this->load->model('employee_model','employee');
+		$this->load->model('user_model','user');
 		$this->load->model('panel_model');
 		$this->load->model('login_model');
 		$user_id=$this->session->userdata("id");
@@ -28,38 +31,73 @@ class Release extends CI_Controller {
 		$this->load->view('content/release');
 	}
 
-	public function ajax_list()
+	public function ajax_list_asset()
+	{
+		$list = $this->asset->_get_vanilla_datatables_query();
+		$assets = array();
+		foreach ($list as $asset) {
+      			$assets[] =  array('device_id' => ($asset->device_id), 'device_name' => ($asset->name));
+		}
+
+		// log_message('error', json_encode($assets));
+		echo json_encode($assets);
+	}
+
+	public function ajax_list_user()
+	{
+		$list = $this->employee->_get_vanilla_datatables_query();
+		$users = array();
+		foreach ($list as $employee) {
+      			$employees[] =  array('user_id' => ($employee->empId), 'user_name' => ($employee->lastName) . ", " . ($employee->firstName));
+		}
+
+		// log_message('error', json_encode($users));
+		echo json_encode($employees);
+	}
+
+	public function ajax_save_potchi()
+	{
+
+		$data = array(
+	      	'dev_id' => $this->input->post('select-item'),
+	      	'emp_id' => $this->input->post('select-user'),
+	      	'release_date' => $this->input->post('release-date'),
+	      	'status' => $this->input->post('Borrowed')
+		);
+
+		// log_message('error', json_encode($data));
+
+		$insert = $this->release->save($data);
+		echo json_encode("Success");
+	}
+
+	public function ajax_populate()
 	{
 		$list = $this->release->get_datatables();
 		$data = array();
 		$no = $_POST['start'];
-		foreach ($list as $asset) {
+		foreach ($list as $release) {
 			$no++;
 			$row = array();
-			$row[] = $asset->device_id;
-			$row[] = $asset->name;
-			$row[] = $asset->model;
-			$row[] = $asset->resolution;
-			$row[] = $asset->processor;
-			$row[] = $asset->ram;
-			$row[] = $asset->os;
-			$row[] = $asset->gpu;
-			$row[] = $asset->bit;
-			$row[] = $asset->simSupport;
-			$row[] = $asset->categName;
-			$row[] = $asset->condition;
-			$row[] = $asset->status;
+		      $row[] = $release->dev_id;
+		      $row[] = $release->name;
+		      $row[] = $release->release_date;
 
-			if ($asset->status_id == "1") {
-				$row[] = '
-						<a class="btn btn-sm btn-warning disabled" href="javascript:void(0)" title="Delete" onclick="return_asset('."'".$asset->id."'".')"><i class="glyphicon glyphicon-arrow-up"></i> Return</a>';
-			}else{
-				$row[] = '
-						<a class="btn btn-sm btn-warning" href="javascript:void(0)" title="Delete" onclick="return_asset('."'".$asset->id."'".')"><i class="glyphicon glyphicon-arrow-up"></i> Return</a>';
-			}
+		      if($release->return_date == NULL) {
+		      	$row[] = "PENDING";
+		      } else {
+		      	$row[] = $release->return_date;
+		      };
+
+		      $row[] = $release->status;
+		      $row[] = $release->lastName . ", " . $release->firstName;
+
+			// add html for action
+			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_asset('."'".$release->release_id."'".')"><i class="glyphicon glyphicon-pencil"></i> Modify</a>
+				  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_asset('."'".$release->release_id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
 			$data[] = $row;
 		}
-
+		
 		$output = array(
 						"draw" => $_POST['draw'],
 						"recordsTotal" => $this->release->count_all(),
@@ -67,33 +105,33 @@ class Release extends CI_Controller {
 						"data" => $data,
 				);
 		//output to json format
+		// log_message('error', json_encode($data));
 		echo json_encode($output);
 	}
-
-	public function select_employee(){
-		$id = $this->input->get('name',true);
-		$result = $this->release->select_employee($id);
-		$got_result='';
-		if(!empty($result)){
-			foreach ($result as $key) {
-				$got_result[]=array("id"=>$key['id'],"text"=>$key['firstName']);
-			}
-		}
-		//print_r($got_result);
-		echo json_encode($got_result);
+	public function ajax_edit($id)
+	{
+		$data = $this->release->get_by_id($id);
+		// log_message('error', json_encode($data));
+		echo json_encode($data);
 	}
 
-	public function select_item(){
-		$id = $this->input->get('name',true);
-		$result = $this->release->select_item($id);
-		$got_result='';
-		if(!empty($result)){
-			foreach ($result as $key) {
-				$got_result[]=array("id"=>$key['id'],"text"=>$key['name']);
-			}
-		}
-		//print_r($got_result);
-		echo json_encode($got_result);
+	public function ajax_update()
+	{
+
+		$data = array(
+	      	'dev_id' => $this->input->post('modal-select-item'),
+	      	'emp_id' => $this->input->post('modal-select-user'),
+	      	'release_date' => $this->input->post('modal-release-date'),
+	      	'return_date' => $this->input->post('modal-return-date'),
+	      	'status' => $this->input->post('modal-select-status'),
+	      	'release_id' => $this->input->post('id')
+
+		);
+
+		log_message('error', json_encode($data));
+
+		$this->release->update($data['release_id'], $data);
+		echo json_encode(array("status" => TRUE));
 	}
 
 }
