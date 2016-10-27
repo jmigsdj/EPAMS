@@ -62,7 +62,7 @@ class Release extends CI_Controller {
 	      	'dev_id' => $this->input->post('select-item'),
 	      	'emp_id' => $this->input->post('select-user'),
 	      	'release_date' => $this->input->post('release-date'),
-	      	'status' => $this->input->post('Borrowed')
+	      	'status' => 'Borrowed'
 		);
 
 		// log_message('error', json_encode($data));
