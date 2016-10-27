@@ -53,6 +53,14 @@ class Employee_model extends CI_Model {
 		}
 	}
 
+	function get_vanilla_datatables()
+	{
+		$this->db->join('shifts', 'employees.shift = shifts.shift_id', 'inner');
+		$this->db->from($this->table);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	function get_datatables()
 	{
 		$this->_get_datatables_query();

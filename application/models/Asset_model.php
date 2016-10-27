@@ -70,6 +70,28 @@ class Asset_model extends CI_Model {
 		}
 	}
 
+	function get_vanilla_datatables()
+	{
+		$this->db->select('a.*,
+			cat.category_id,
+		  cat.category_name,
+			con.condition_id,
+		  con.condition_name,
+			s.status_id,
+		  s.status_name');
+
+		$this->db->join('category cat', 'cat.category_id = a.category_id', 'left');
+		$this->db->join('condition con', 'con.condition_id = a.condition_id', 'left');
+		$this->db->join('status s', 's.status_id = a.status_id', 'left');
+
+		$this->db->from($this->table);
+
+
+		
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	function get_datatables()
 	{
 		$this->_get_datatables_query();
