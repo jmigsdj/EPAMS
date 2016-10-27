@@ -145,4 +145,17 @@ class Employee extends CI_Controller {
 		}
 	}
 
+	public function select_shift(){
+		$id = $this->input->get('name',true);
+		$result = $this->employee->select_shift($id);
+		$got_result='';
+		if(!empty($result)){
+			foreach ($result as $key) {
+				$got_result[]=array("id"=>$key['shift_id'],"text"=>$key['shift_name']);
+			}
+		}
+		//print_r($got_result);
+		echo json_encode($got_result);
+	}
+
 }

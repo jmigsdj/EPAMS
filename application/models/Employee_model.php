@@ -17,7 +17,8 @@ class Employee_model extends CI_Model {
 	private function _get_datatables_query()
 	{
 
-		$this->db->from($this->table)->join('shifts', 'employees.shift = shifts.shift_id', 'inner');
+		$this->db->join('shifts', 'employees.shift = shifts.shift_id', 'inner');
+		$this->db->from($this->table);
 
 		$i = 0;
 
@@ -101,6 +102,14 @@ class Employee_model extends CI_Model {
 	{
 		$this->db->where('id', $id);
 		$this->db->delete($this->table);
+	}
+
+	public function select_shift($id){
+			$this->db->like('shift_name',$id);
+			$fetch = $this->db->get("shifts");
+			$row = $fetch->result_array();
+			//print_r($this->db->last_query());
+			return $row;
 	}
 
 
