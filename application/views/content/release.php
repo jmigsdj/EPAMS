@@ -16,7 +16,6 @@
         <div class="row">
           <div class="container">
               <h3>Release Table</h3>
-              <h1 style="font-size:20pt">Release Page</h1>
               <br />
               <button class="btn btn-success" onclick="borrow_asset()"><i class="glyphicon glyphicon-arrow-down"></i> Borrow</button>
               <button class="btn btn-default" onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i> Reload</button>

@@ -141,7 +141,7 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="<?=base_url()?>media/img/no_image_found.png" class="user-image" alt="User Image"/>
+                  <img src="<?=base_url()?>media/img/epLogo.png" class="user-image" alt="User Image"/>
                   <span class="hidden-xs"><b>Hello <?=$this->session->uname ?>!</b></span>
                 </a>
                 <ul class="dropdown-menu">
