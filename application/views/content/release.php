@@ -186,6 +186,7 @@
                 </form>
             </div>
             <div class="modal-footer">
+                <!-- <button type="submit" id="btnSave" class="btn btn-primary">Save</button> -->
                 <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
             </div>
@@ -271,8 +272,10 @@ $(document).ready(function() {
         data: $('#form-potchi').serializeArray(),
         dataType: "JSON",
         success: function(data)
-        {
-            alert('Data saved, will do tables below this one next. xD')
+        { 
+
+            reload_table();
+            // alert('Data saved, will do tables below this one next. xD')
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
@@ -378,6 +381,8 @@ $(document).ready(function() {
 
         }
     });
+
+    return false;
   }
 
   function reload_table() {
