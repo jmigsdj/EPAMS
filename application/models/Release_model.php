@@ -83,7 +83,7 @@ class Release_model extends CI_Model {
 	}
 
 	public function get_by_id($id)
-	{	
+	{
 
 		$this->db->from($this->table)->join('employees', 'release_logs.emp_id = employees.empId','inner')->join('assets', 'release_logs.dev_id = assets.device_id','inner')->where('release_id',$id);
 		$query = $this->db->get();

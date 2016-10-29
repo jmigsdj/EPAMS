@@ -17,8 +17,17 @@
 			  }
 			}
 		</script>
-		<!-- jQuery -->
-		<script src="<?=base_url()?>media/js/jquery-1.11.3.js"></script>
+
+		<!-- DataTables + jQuery 2.2.3 -->
+		<link rel="stylesheet" type="text/css" href="<?=base_url()?>/assets/datatables2/datatables.min.css"/>
+		<script type="text/javascript" src="<?=base_url()?>/assets/datatables2/datatables.min.js"></script>
+
+		<!-- jQuery UI  1.12.1 -->
+		<link rel="stylesheet" type="text/css" href="<?=base_url()?>/assets/jquery-ui/jquery-ui.min.css"/>
+		<script type="text/javascript" src="<?=base_url()?>/assets/jquery-ui/jquery-ui.min.js"></script>
+
+
+
 		<!-- Bootstrap-->
 		<link rel="stylesheet" href="<?=base_url()?>media/css/bootstrap.css" />
 		<script src="<?=base_url()?>media/js/bootstrap.js"></script>
@@ -46,12 +55,6 @@
 		<script src="<?=base_url()?>media/js/moment.js"></script>
 		<link rel="stylesheet" href="<?=base_url()?>media/css/bootstrap-datetimepicker.css" />
 		<script src="<?=base_url()?>media/js/bootstrap-datetimepicker.js"></script>
-		<!-- Datatables -->
-    <link href="<?php echo base_url('assets/datatables/css/dataTables.bootstrap.css')?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')?>" rel="stylesheet">
-    <script src="<?php echo base_url('assets/datatables/js/jquery.dataTables.min.js')?>"></script>
-    <script src="<?php echo base_url('assets/datatables/js/dataTables.bootstrap.js')?>"></script>
-    <script src="<?php echo base_url('assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js')?>"></script>
 		<script type="text/javascript">
 			$.fn.modal.Constructor.prototype.enforceFocus = function() {};
 		</script>
