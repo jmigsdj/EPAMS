@@ -16,88 +16,93 @@
     </div><!-- box-body -->
     <div ><!-- /.box-header -->
       <div class="box-body">
-        <div class="row">
           <div class="container">
-              <h1 style="font-size:20pt">Assets Datatable</h1>
-              <br />
-              <button class="btn btn-success" onclick="add_asset()"><i class="glyphicon glyphicon-plus"></i> Add Asset</button>
-              <button class="btn btn-default" onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i> Reload</button>
-              <br />
-              <br />
-              <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                <style type="text/css">
-                  thead th {min-width: 150px; text-align: center;}
-                  tr td {text-align: center;}
-                </style>
-                  <thead>
-                      <tr> 
-                          <th>Device ID</th>
-                          <th>Barcode</th>
-                          <th>Name</th>
-                          <th>Brand</th>
-                          <th>Model</th>
-                          <th>Resolution</th>
-                          <th>Processor</th>
-                          <th>Ram</th>
-                          <th>Os</th>
-                          <th>Chipset</th>
-                          <th>Gpu</th>
-                          <th>Bit</th>
-                          <th>Screen Size</th>
-                          <th>Graphics</th>
-                          <th>Internal Storage</th>
-                          <th>Sim Support</th>
-                          <th>Arrival Date</th>
-                          <th>Arrival Notes</th>
-                          <th>Serial</th>
-                          <th>Asset Type</th>
-                          <th>Sub Asset</th>
-                          <th>Imei</th>
-                          <th>Storage Allocation</th>
-                          <th>Category</th>
-                          <th>Condition</th>
-                          <th>Status</th>
-                          <th style="width:125px;">Action</th>
-                      </tr>
-                  </thead>
+            <div class="row">
+              <div class="col-sm-12">
+                <h1 style="font-size:20pt">Assets Datatable</h1>
+                <br />
+                <button class="btn btn-success" onclick="add_asset()"><i class="glyphicon glyphicon-plus"></i> Add Asset</button>
+                <button class="btn btn-default" onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i> Reload</button>
+                <br />
+                <br />
+                <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                  <style type="text/css">
+                    thead th {min-width: 150px; text-align: center;}
+                    tr td {text-align: center;}
+                  </style>
+                    <thead>
+                        <tr> 
+                            <th>Device ID</th>
+                            <th>Barcode</th>
+                            <th>Name</th>
+                            <th>Brand</th>
+                            <th>Model</th>
+                            <th>Resolution</th>
+                            <th>Processor</th>
+                            <th>Ram</th>
+                            <th>Os</th>
+                            <th>Chipset</th>
+                            <th>Gpu</th>
+                            <th>Bit</th>
+                            <th>Screen Size</th>
+                            <th>Graphics</th>
+                            <th>Internal Storage</th>
+                            <th>Sim Support</th>
+                            <th>Arrival Date</th>
+                            <th>Arrival Notes</th>
+                            <th>Serial</th>
+                            <th>Asset Type</th>
+                            <th>Sub Asset</th>
+                            <th>Imei</th>
+                            <th>Storage Allocation</th>
+                            <th>Category</th>
+                            <th>Condition</th>
+                            <th>Status</th>
+                            <th style="width:125px;">Action</th>
+                        </tr>
+                    </thead>
 
-                  <tbody>
-                  </tbody>
+                    <tbody>
+                    </tbody>
 
-                  <tfoot>
-                      <tr>
-                          <th>Device ID</th>
-                          <th>Barcode</th>
-                          <th>Name</th>
-                          <th>Brand</th>
-                          <th>Model</th>
-                          <th>Resolution</th>
-                          <th>Processor</th>
-                          <th>Ram</th>
-                          <th>Os</th>
-                          <th>Chipset</th>
-                          <th>Gpu</th>
-                          <th>Bit</th>
-                          <th>Screen Size</th>
-                          <th>Graphics</th>
-                          <th>Internal Storage</th>
-                          <th>Sim Support</th>
-                          <th>Arrival Date</th>
-                          <th>Arrival Notes</th>
-                          <th>Serial</th>
-                          <th>Asset Type</th>
-                          <th>Sub Asset</th>
-                          <th>Imei</th>
-                          <th>Storage Allocation</th>
-                          <th>Category</th>
-                          <th>Condition</th>
-                          <th>Status</th>
-                          <th>Action</th>
-                      </tr>
-                  </tfoot>
-              </table>
+                    <tfoot>
+                        <tr>
+                            <th>Device ID</th>
+                            <th>Barcode</th>
+                            <th>Name</th>
+                            <th>Brand</th>
+                            <th>Model</th>
+                            <th>Resolution</th>
+                            <th>Processor</th>
+                            <th>Ram</th>
+                            <th>Os</th>
+                            <th>Chipset</th>
+                            <th>Gpu</th>
+                            <th>Bit</th>
+                            <th>Screen Size</th>
+                            <th>Graphics</th>
+                            <th>Internal Storage</th>
+                            <th>Sim Support</th>
+                            <th>Arrival Date</th>
+                            <th>Arrival Notes</th>
+                            <th>Serial</th>
+                            <th>Asset Type</th>
+                            <th>Sub Asset</th>
+                            <th>Imei</th>
+                            <th>Storage Allocation</th>
+                            <th>Category</th>
+                            <th>Condition</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+                </table>
+              </div>
+              <div class="col-sm-12">
+                <div class="buttons" id="buttons-container"></div>
+              </div>
+            </div>
           </div> <!-- end of container -->
-        </div>
       </div><!-- box-body -->
     </div>
   </div>
@@ -133,6 +138,15 @@ table = $('#table').DataTable({
         "orderable": false, //set not orderable
     },
     ],
+    initComplete: function() {
+      new $.fn.dataTable.Buttons(table, {
+          buttons: [{
+            extend: 'excelHtml5',
+            text: 'Download as (.xls)'
+          }]
+      });  
+      table.buttons().container().appendTo( $('#buttons-container') );
+    }
 
 });
 

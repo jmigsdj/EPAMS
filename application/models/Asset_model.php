@@ -3,7 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Asset_model extends CI_Model {
 
-	var $table = 'assets a';
+	var $table = 'assets';
+
 	var $column_order = array('device_id', 'name','brand','model','resolution','processor','ram','os','gpu','simSupport','arrivalDate','status_id','category_id', null); //set column field database for datatable orderable
 	var $column_search = array('device_id', 'name','brand','model','resolution','processor','ram','os','gpu','simSupport','arrivalDate','status_id','category_id'); //set column field database for datatable searchable just firstname , lastname , address are searchable
 	var $order = array('id' => 'desc'); // default order
@@ -17,22 +18,11 @@ class Asset_model extends CI_Model {
 	private function _get_datatables_query()
 	{
 
-		//$this->db->select('a.*, a.id, cat.*, cat.id AS category_id, con.*, con.id AS condition_id');
-		$this->db->select('assets.*,
-			cat.category_id,
-		  cat.category_name,
-			con.condition_id,
-		  con.condition_name,
-			s.status_id,
-		  s.status_name');
-
+		$this->db->select('assets.*, cat.category_id, cat.category_name, con.condition_id, con.condition_name, s.status_id, s.status_name');
+		$this->db->from('assets as a');
 		$this->db->join('category cat', 'cat.category_id = assets.category_id', 'left');
 		$this->db->join('condition con', 'con.condition_id = assets.condition_id', 'left');
 		$this->db->join('status s', 's.status_id = assets.status_id', 'left');
-		//$fetch = $this->db->get('assets a');
-		//$row = $fetch->result_array();
-		//print_r($this->db->last_query());
-
 
 		$this->db->from($this->table);
 
@@ -72,22 +62,14 @@ class Asset_model extends CI_Model {
 
 	function get_vanilla_datatables()
 	{
-		$this->db->select('a.*,
-			cat.category_id,
-		  cat.category_name,
-			con.condition_id,
-		  con.condition_name,
-			s.status_id,
-		  s.status_name');
-
-		$this->db->join('category cat', 'cat.category_id = a.category_id', 'left');
-		$this->db->join('condition con', 'con.condition_id = a.condition_id', 'left');
-		$this->db->join('status s', 's.status_id = a.status_id', 'left');
+		
+		$this->db->select('assets.*, cat.category_id, cat.category_name, con.condition_id, con.condition_name, s.status_id, s.status_name');
+		$this->db->from('assets as a');
+		$this->db->join('category cat', 'cat.category_id = assets.category_id', 'left');
+		$this->db->join('condition con', 'con.condition_id = assets.condition_id', 'left');
+		$this->db->join('status s', 's.status_id = assets.status_id', 'left');
 
 		$this->db->from($this->table);
-
-
-		
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -116,15 +98,8 @@ class Asset_model extends CI_Model {
 
 	public function get_by_id($id)
 	{
-		$this->db->select('assets.*,
-			cat.category_id,
-		  cat.category_name,
-			con.condition_id,
-		  con.condition_name,
-			s.status_id,
-		  s.status_name');
-
-		$this->db->from($this->table);
+		$this->db->select('assets.*, cat.category_id, cat.category_name, con.condition_id, con.condition_name, s.status_id, s.status_name');
+		$this->db->from('assets as a');
 		$this->db->join('category cat', 'cat.category_id = assets.category_id', 'left');
 		$this->db->join('condition con', 'con.condition_id = assets.condition_id', 'left');
 		$this->db->join('status s', 's.status_id = assets.status_id', 'left');
