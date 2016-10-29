@@ -72,7 +72,7 @@
                         </div>
 
                         <div class="col-sm-1">
-                          <button onclick="potchi()" class="btn btn-primary">POTCHI!!</button>
+                          <button class="btn btn-primary btnSaveData">POTCHI!!</button>
                         </div>
 
                       </form>
@@ -169,7 +169,7 @@
             </div>
             <div class="modal-footer">
                 <!-- <button type="submit" id="btnSave" class="btn btn-primary">Save</button> -->
-                <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
+                <button type="button" id="btnSave" class="btn btn-primary saveModalData">Save</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
             </div>
         </div><!-- /.modal-content -->
@@ -179,8 +179,9 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $(".select2").select2();
+
     $( ".datepicker" ).datepicker({
-      'format': "yyyy-mm-dd"
+      'dateFormat': "yy-mm-dd"
     });
 
     $.ajax({
@@ -223,7 +224,7 @@ $(document).ready(function() {
           }
         });
 
-    var table = $('#table').DataTable({
+    table = $('#table').DataTable({
 
         "scrollX": true,
         "processing": true, //Feature control the processing indicator.
@@ -248,31 +249,39 @@ $(document).ready(function() {
           });  
           table.buttons().container().appendTo( $('#buttons-container') );
         }
-
     }); 
 
-
+    
 });
 
-  function potchi() {
+  function reload_table() {
+      table.ajax.reload(null, false); //reload datatable ajax
+  }
+
+  // function potchi() {
+  $('.btnSaveData').click(function(event) {
+    event.preventDefault();
     $.ajax({
         url: "<?php echo site_url('release/ajax_save_potchi')?>",
         type: "POST",
         data: $('#form-potchi').serializeArray(),
         dataType: "JSON",
         success: function(data)
-        {
-
+        {   
+              $.notify({
+                  icon:'fa fa-check',
+                  message: "Successfully added!"
+                },{
+                  type: 'success'
+              });
             reload_table();
-            // alert('Data saved, will do tables below this one next. xD')
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
             console.log($('#form-potchi').serializeArray());
-            alert('sad');
         }
     });
-  }
+  });
 
   function edit_asset(id) {
     save_method = 'update';
@@ -331,7 +340,15 @@ $(document).ready(function() {
     });
   }
 
-  function save() {
+  $("#form-release").on('hidden.bs.modal', function () {
+    $(this).data('bs.modal', null);
+    $(".modal-select-user").select2('destroy');
+    $(".modal-select-item").select2('destroy');
+  });
+
+  // function save() {
+  $('.saveModalData').click(function(event) {
+    event.preventDefault();
     $('#btnSave').text('saving...'); //change button text
     $('#btnSave').attr('disabled',true); //set button disable
 
@@ -346,8 +363,15 @@ $(document).ready(function() {
 
             if(data.status) //if success close modal and reload ajax table
             {
-                $('#modal_form').modal('hide');
+                $('#form-release').modal('hide');   
                 reload_table();
+
+                $.notify({
+                  icon:'fa fa-check',
+                  message: "Successfully edited!"
+                },{
+                  type: 'success'
+                });
             }
             else
             {
@@ -357,6 +381,7 @@ $(document).ready(function() {
                     $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
                 }
             }
+
             $('#btnSave').text('save'); //change button text
             $('#btnSave').attr('disabled',false); //set button enable
 
@@ -372,11 +397,7 @@ $(document).ready(function() {
     });
 
     return false;
-  }
-
-  function reload_table() {
-    table.ajax.reload(null,false); //reload datatable ajax
-  }
+  });
 
   function delete_asset(id) {
   if(confirm('Are you sure delete this data?'))
@@ -389,7 +410,7 @@ $(document).ready(function() {
           success: function(data)
           {
               //if success reload ajax table
-              $('#modal_form').modal('hide');
+              $('#modal-release-form').modal('hide');
               reload_table();
               $.notify({
                   icon:'fa fa-check',

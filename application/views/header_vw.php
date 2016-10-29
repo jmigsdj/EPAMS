@@ -22,12 +22,6 @@
 		<link rel="stylesheet" type="text/css" href="<?=base_url()?>/assets/datatables2/datatables.min.css"/>
 		<script type="text/javascript" src="<?=base_url()?>/assets/datatables2/datatables.min.js"></script>
 
-		<!-- jQuery UI  1.12.1 -->
-		<link rel="stylesheet" type="text/css" href="<?=base_url()?>/assets/jquery-ui/jquery-ui.min.css"/>
-		<script type="text/javascript" src="<?=base_url()?>/assets/jquery-ui/jquery-ui.min.js"></script>
-
-
-
 		<!-- Bootstrap-->
 		<link rel="stylesheet" href="<?=base_url()?>media/css/bootstrap.css" />
 		<script src="<?=base_url()?>media/js/bootstrap.js"></script>
@@ -55,6 +49,12 @@
 		<script src="<?=base_url()?>media/js/moment.js"></script>
 		<link rel="stylesheet" href="<?=base_url()?>media/css/bootstrap-datetimepicker.css" />
 		<script src="<?=base_url()?>media/js/bootstrap-datetimepicker.js"></script>
+
+		<!-- jQuery UI  1.12.1 -->
+		<link rel="stylesheet" type="text/css" href="<?=base_url()?>/assets/jquery-ui/jquery-ui.min.css"/>
+		<script type="text/javascript" src="<?=base_url()?>/assets/jquery-ui/jquery-ui.min.js"></script>
+
+		
 		<script type="text/javascript">
 			$.fn.modal.Constructor.prototype.enforceFocus = function() {};
 		</script>
