@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Asset_model extends CI_Model {
 
-	var $table = 'assets';
+	var $table = 'assets a';
 	var $column_order = array('device_id', 'name','brand','model','resolution','processor','ram','os','gpu','simSupport','arrivalDate','status_id','category_id', null); //set column field database for datatable orderable
 	var $column_search = array('device_id', 'name','brand','model','resolution','processor','ram','os','gpu','simSupport','arrivalDate','status_id','category_id'); //set column field database for datatable searchable just firstname , lastname , address are searchable
 	var $order = array('id' => 'desc'); // default order
