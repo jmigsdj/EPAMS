@@ -97,7 +97,7 @@ class Release extends CI_Controller {
 				  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_asset('."'".$release->release_id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
 			$data[] = $row;
 		}
-		
+
 		$output = array(
 						"draw" => $_POST['draw'],
 						"recordsTotal" => $this->release->count_all(),
