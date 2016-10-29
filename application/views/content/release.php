@@ -1,13 +1,4 @@
 <head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
-
   <style type="text/css">
     .release-content {padding: 20px 30px;}
     .release-content h2 {font-size: 18px;}
@@ -40,7 +31,7 @@
 
           <div ><!-- /.box-header -->
             <div class="box-body">
-            
+
               <div class="row">
                 <div class="col-sm-12">
                   <div class="row release-content">
@@ -80,19 +71,6 @@
                           </div>
                         </div>
 
-                    <!--     <div class="col-sm-3">
-                          <div class="form-group">
-                            <label class="sr-only" for="select-status">Status</label>
-                            <div class="input-group">
-                              <div class="input-group-addon">Status</div>
-                              <select class="form-control" name="select-status">
-                                <option value="Borrowed" selected="selected">Borrow</option>
-                                <option value="Returned">Return</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div> -->
-
                         <div class="col-sm-1">
                           <button onclick="potchi()" class="btn btn-primary">POTCHI!!</button>
                         </div>
@@ -117,6 +95,10 @@
                       <tbody>
                       </tbody>
                   </table>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="buttons" id="buttons-container"></div>
                 </div>
               </div>
 
@@ -241,28 +223,35 @@ $(document).ready(function() {
           }
         });
 
-    table = $('#table').DataTable({
+    var table = $('#table').DataTable({
 
         "scrollX": true,
         "processing": true, //Feature control the processing indicator.
         "serverSide": true, //Feature control DataTables' server-side processing mode.
         "order": [], //Initial no order.
-
-        // Load data for the table's content from an Ajax source
         "ajax": {
             "url": "<?php echo site_url('release/ajax_populate')?>",
             "type": "POST"
         },
-
-        //Set column definition initialisation properties.
         "columnDefs": [
         {
             "targets": [ -1 ], //last column
             "orderable": false, //set not orderable
         },
         ],
+        initComplete: function() {
+          new $.fn.dataTable.Buttons(table, {
+              buttons: [{
+                extend: 'excelHtml5',
+                text: 'Download as (.xls)'
+              }]
+          });  
+          table.buttons().container().appendTo( $('#buttons-container') );
+        }
 
-    });
+    }); 
+
+
 });
 
   function potchi() {
@@ -272,7 +261,7 @@ $(document).ready(function() {
         data: $('#form-potchi').serializeArray(),
         dataType: "JSON",
         success: function(data)
-        { 
+        {
 
             reload_table();
             // alert('Data saved, will do tables below this one next. xD')
@@ -419,4 +408,3 @@ $(document).ready(function() {
 }
 </script>
 </body>
-
