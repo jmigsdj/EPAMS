@@ -245,11 +245,11 @@ $(document).ready(function() {
                 extend: 'excelHtml5',
                 text: 'Download as (.xls)'
               }]
-          });  
+          });
           table.buttons().container().appendTo( $('#buttons-container') );
         }
 
-    }); 
+    });
 
 
 });
@@ -264,7 +264,7 @@ $(document).ready(function() {
         {
 
             reload_table();
-            // alert('Data saved, will do tables below this one next. xD')
+            alert('Data saved, will do tables below this one next. xD');
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
@@ -272,6 +272,7 @@ $(document).ready(function() {
             alert('sad');
         }
     });
+    return false;
   }
 
   function edit_asset(id) {

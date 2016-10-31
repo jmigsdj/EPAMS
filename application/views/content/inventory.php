@@ -19,6 +19,9 @@
               <br />
               <br />
               <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+              <style type="text/css">
+                thead th {min-width: 130px;}
+              </style>
                   <thead>
                       <tr>
                         <th>Device ID</th>
@@ -80,6 +83,8 @@
 
 <script>
   $(document).ready(function() {
-  $('#table').DataTable();
+  $('#table').DataTable({
+    "scrollX": true,
+  });
   } );
 </script>

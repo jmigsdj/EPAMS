@@ -25,12 +25,11 @@
               <br />
               <br />
               <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                <style type="text/css">
-                  thead th {min-width: 150px; text-align: center;}
-                  tr td {text-align: center;}
-                </style>
+              <style type="text/css">
+                thead th {min-width: 150px;}
+              </style>
                   <thead>
-                      <tr> 
+                      <tr>
                           <th>Device ID</th>
                           <th>Barcode</th>
                           <th>Name</th>
@@ -57,7 +56,7 @@
                           <th>Category</th>
                           <th>Condition</th>
                           <th>Status</th>
-                          <th style="width:125px;">Action</th>
+                          <th style="width:130px;">Action</th>
                       </tr>
                   </thead>
 

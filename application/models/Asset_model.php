@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Asset_model extends CI_Model {
 
-	var $table = 'assets a';
+	var $table = 'assets';
 	var $column_order = array('device_id', 'name','brand','model','resolution','processor','ram','os','gpu','simSupport','arrivalDate','status_id','category_id', null); //set column field database for datatable orderable
 	var $column_search = array('device_id', 'name','brand','model','resolution','processor','ram','os','gpu','simSupport','arrivalDate','status_id','category_id'); //set column field database for datatable searchable just firstname , lastname , address are searchable
 	var $order = array('id' => 'desc'); // default order
@@ -72,7 +72,7 @@ class Asset_model extends CI_Model {
 
 	function get_vanilla_datatables()
 	{
-		$this->db->select('a.*,
+		$this->db->select('assets.*,
 			cat.category_id,
 		  cat.category_name,
 			con.condition_id,
@@ -80,14 +80,14 @@ class Asset_model extends CI_Model {
 			s.status_id,
 		  s.status_name');
 
-		$this->db->join('category cat', 'cat.category_id = a.category_id', 'left');
-		$this->db->join('condition con', 'con.condition_id = a.condition_id', 'left');
-		$this->db->join('status s', 's.status_id = a.status_id', 'left');
+		$this->db->join('category cat', 'cat.category_id = assets.category_id', 'left');
+		$this->db->join('condition con', 'con.condition_id = assets.condition_id', 'left');
+		$this->db->join('status s', 's.status_id = assets.status_id', 'left');
 
 		$this->db->from($this->table);
 
 
-		
+
 		$query = $this->db->get();
 		return $query->result();
 	}

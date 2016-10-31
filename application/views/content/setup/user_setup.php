@@ -29,7 +29,7 @@
                       <tr>
                           <th>User Name</th>
                           <th>Access Level</th>
-                          <th style="width:125px;">Action</th>
+                          <th style="width:130px;">Action</th>
                       </tr>
                   </thead>
                   <tbody>
