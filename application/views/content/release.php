@@ -5,14 +5,9 @@
     .release-content .form-group {width: 100%;}
     .release-content .input-group {width: 100%; overflow: hidden;}
     /*.form-control {overflow: hidden;}*/
-    th, td {text-align: center;}
     .select2-container {width: 100% !important;}
   </style>
 </head>
-
-<body>
-  <div class="container">
-    <div class="row">
 
       <div class="col-sm-12">
         <div class="box box-success">
@@ -71,14 +66,12 @@
                         </div>
 
                         <div class="col-sm-1">
-                          <button class="btn btn-primary btnSaveData">POTCHI!!</button>
+                          <button class="btn btn-primary btnSaveData">Borrow</button>
                         </div>
 
                       </form>
                   </div>
-                </div>
 
-                <div class="col-sm-12">
                   <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
                       <thead>
                           <tr>
@@ -87,30 +80,20 @@
                               <th>Date of Release</th>
                               <th>Date of Return</th>
                               <th>Status</th>
-                              <th>Potchi</th>
-                              <th>Controls</th>
+                              <th>Borrower</th>
+                              <th>Action</th>
                           </tr>
                       </thead>
                       <tbody>
                       </tbody>
                   </table>
-                </div>
-
-                <div class="col-md-12">
                   <div class="buttons" id="buttons-container"></div>
-                </div>
               </div>
-
-
-
+            </div>
             </div><!-- box-body -->
           </div>
-
-
         </div>
       </div>
-    </div>
-  </div>
 
   <div class="modal fade" id="form-release" class="release-content" role="dialog">
     <div class="modal-dialog">
@@ -132,7 +115,7 @@
                           </div>
                         </div>
                         <div class="form-group">
-                          <label class="control-label col-md-3">Culprit</label>
+                          <label class="control-label col-md-3">Borrower</label>
                           <div class="col-md-9">
                               <select class="form-control modal-select-user select-user" name="modal-select-user">
                               </select>
@@ -288,6 +271,7 @@ $(document).ready(function() {
                 $(this).attr('selected', 'selected').change();
                 $(".modal-select-item").val(data.device_id);
                 $(".modal-select-item").select2();
+                $(".modal-select-item").prop("disabled", true);
               };
             });
             $(".modal-select-user option").each(function() {
@@ -296,6 +280,8 @@ $(document).ready(function() {
                 $(this).attr('selected', 'selected').change();
                 $(".modal-select-user").val(data.emp_id);
                 $(".modal-select-user").select2();
+                $(".modal-select-user").prop("disabled", true);
+
               };
             });
             $(".modal-select-status option").each(function() {
@@ -306,9 +292,10 @@ $(document).ready(function() {
               };
             });
             $('.modal-release-date').val(data.release_date);
+              $('.modal-release-date').datepicker('disable');
             $('.modal-return-date').val(data.return_date);
             $('#form-release').modal('show'); // show bootstrap modal when complete loaded
-            $('.modal-title').text('Edit Asset'); // Set title to Bootstrap modal title
+            $('.modal-title').text('Return Asset'); // Set title to Bootstrap modal title
         },
         error: function (jqXHR, textStatus, errorThrown)
         {

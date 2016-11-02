@@ -93,7 +93,7 @@ class Release extends CI_Controller {
 		      $row[] = $release->lastName . ", " . $release->firstName;
 
 			// add html for action
-			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_asset('."'".$release->release_id."'".')"><i class="glyphicon glyphicon-pencil"></i> Modify</a>
+			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_asset('."'".$release->release_id."'".')"><i class="glyphicon glyphicon-arrow-up"></i> Return</a>
 				  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_asset('."'".$release->release_id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
 			$data[] = $row;
 		}
