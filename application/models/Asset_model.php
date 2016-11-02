@@ -29,7 +29,7 @@ class Asset_model extends CI_Model {
 		$this->db->join('category cat', 'cat.category_id = assets.category_id', 'left');
 		$this->db->join('condition con', 'con.condition_id = assets.condition_id', 'left');
 		$this->db->join('status s', 's.status_id = assets.status_id', 'left');
-		//$fetch = $this->db->get('assets a');
+		//$fetch = $this->db->get('assets');
 		//$row = $fetch->result_array();
 		//print_r($this->db->last_query());
 

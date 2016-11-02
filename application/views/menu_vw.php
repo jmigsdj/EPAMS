@@ -41,6 +41,7 @@
             <li class=""><a href="javascript:void(0);" onclick="loader('panel','history');"><i class="fa fa-file"></i> <span>History Page</span></a></li>
           <?php endif; ?>
             <li class=""><a href="javascript:void(0);" onclick="loader('release','index');"><i class="fa fa-link"></i> <span>Release Page</span></a></li>
+            <li class=""><a href="javascript:void(0);" onclick="loader('out','index');"><i class="fa fa-link"></i> <span>Out Page</span></a></li>
         </ul>
     </section>
 <!-- /.sidebar -->

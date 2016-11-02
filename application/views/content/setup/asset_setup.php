@@ -96,6 +96,9 @@
                   </tfoot>
               </table>
           </div> <!-- end of container -->
+          <div class="col-md-12">
+            <div class="buttons" id="buttons-container"></div>
+          </div>
         </div>
       </div><!-- box-body -->
     </div>
@@ -132,6 +135,16 @@ table = $('#table').DataTable({
         "orderable": false, //set not orderable
     },
     ],
+
+    initComplete: function() {
+      new $.fn.dataTable.Buttons(table, {
+          buttons: [{
+            extend: 'excelHtml5',
+            text: 'Download as (.xls)'
+          }]
+      });
+      table.buttons().container().appendTo( $('#buttons-container') );
+    }
 
 });
 
