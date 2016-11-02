@@ -18,7 +18,7 @@
     <div ><!-- /.box-header -->
       <div class="box-body">
         <div class="row">
-          <div class="container">
+          <div class="col-sm-12">
               <h1 style="font-size:20pt">Shift Datatable</h1>
 
               <br />

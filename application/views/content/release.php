@@ -4,7 +4,6 @@
     .release-content h2 {font-size: 18px;}
     .release-content .form-group {width: 100%;}
     .release-content .input-group {width: 100%; overflow: hidden;}
-
     /*.form-control {overflow: hidden;}*/
     th, td {text-align: center;}
     .select2-container {width: 100% !important;}
@@ -179,11 +178,9 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $(".select2").select2();
-
     $( ".datepicker" ).datepicker({
       'dateFormat': "yy-mm-dd"
     });
-
     $.ajax({
           type: 'GET',
           url: '<?php echo site_url("release/ajax_list_asset")?>',
@@ -192,7 +189,6 @@ $(document).ready(function() {
             result.forEach(function(result) {
               $('.select-item').append($('<option>', {value: result.device_id, text: result.device_name}));
             })
-
           },
           error: function (jqXHR, textStatus, errorThrown)
           {
@@ -202,7 +198,6 @@ $(document).ready(function() {
               console.log(errorThrown);
           }
         });
-
     $.ajax({
           type: 'GET',
           url: '<?php echo site_url("release/ajax_list_user")?>',
@@ -211,7 +206,6 @@ $(document).ready(function() {
             result.forEach(function(result) {
               $('.select-user').append($('<option>', {value: result.user_id, text: result.user_name}));
             })
-
           },
           error: function (jqXHR, textStatus, errorThrown)
           {
@@ -219,13 +213,9 @@ $(document).ready(function() {
               console.log(jqXHR);
               console.log(textStatus);
               console.log(errorThrown);
-
-
           }
         });
-
     table = $('#table').DataTable({
-
         "scrollX": true,
         "processing": true, //Feature control the processing indicator.
         "serverSide": true, //Feature control DataTables' server-side processing mode.
@@ -249,20 +239,12 @@ $(document).ready(function() {
           });
           table.buttons().container().appendTo( $('#buttons-container') );
         }
-<<<<<<< HEAD
-
     });
-=======
-    }); 
->>>>>>> refs/remotes/origin/dev-jilles
 
-    
 });
-
   function reload_table() {
       table.ajax.reload(null, false); //reload datatable ajax
   }
-
   // function potchi() {
   $('.btnSaveData').click(function(event) {
     event.preventDefault();
@@ -272,7 +254,7 @@ $(document).ready(function() {
         data: $('#form-potchi').serializeArray(),
         dataType: "JSON",
         success: function(data)
-        {   
+        {
               $.notify({
                   icon:'fa fa-check',
                   message: "Successfully added!"
@@ -280,29 +262,18 @@ $(document).ready(function() {
                   type: 'success'
               });
             reload_table();
-<<<<<<< HEAD
-            alert('Data saved, will do tables below this one next. xD');
-=======
->>>>>>> refs/remotes/origin/dev-jilles
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
             console.log($('#form-potchi').serializeArray());
         }
     });
-<<<<<<< HEAD
-    return false;
-  }
-=======
   });
->>>>>>> refs/remotes/origin/dev-jilles
-
   function edit_asset(id) {
     save_method = 'update';
     $('#modal-release-form')[0].reset(); // reset form on modals
     $('.form-group').removeClass('has-error'); // clear error class
     $('.help-block').empty(); // clear error string
-
     //Ajax Load data from ajax
     $.ajax({
         url : "<?php echo site_url('release/ajax_edit/')?>/" + id,
@@ -310,29 +281,23 @@ $(document).ready(function() {
         dataType: "JSON",
         success: function(data)
         {
-
             $('.item-id').val(data.release_id);
-
             $(".modal-select-item option").each(function() {
               $(this).removeAttr('selected');
               if($(this).val() == data.device_id ) {
                 $(this).attr('selected', 'selected').change();
                 $(".modal-select-item").val(data.device_id);
-
                 $(".modal-select-item").select2();
               };
             });
-
             $(".modal-select-user option").each(function() {
               $(this).removeAttr('selected');
               if($(this).val() == data.emp_id ) {
                 $(this).attr('selected', 'selected').change();
                 $(".modal-select-user").val(data.emp_id);
-
                 $(".modal-select-user").select2();
               };
             });
-
             $(".modal-select-status option").each(function() {
               $(this).removeAttr('selected');
               if($(this).val() == data.status ) {
@@ -340,10 +305,8 @@ $(document).ready(function() {
                 $(".modal-select-status").val(data.status);
               };
             });
-
             $('.modal-release-date').val(data.release_date);
             $('.modal-return-date').val(data.return_date);
-
             $('#form-release').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit Asset'); // Set title to Bootstrap modal title
         },
@@ -353,19 +316,16 @@ $(document).ready(function() {
         }
     });
   }
-
   $("#form-release").on('hidden.bs.modal', function () {
     $(this).data('bs.modal', null);
     $(".modal-select-user").select2('destroy');
     $(".modal-select-item").select2('destroy');
   });
-
   // function save() {
   $('.saveModalData').click(function(event) {
     event.preventDefault();
     $('#btnSave').text('saving...'); //change button text
     $('#btnSave').attr('disabled',true); //set button disable
-
     // ajax adding data to database
     $.ajax({
         url : "<?php echo site_url('release/ajax_update')?>",
@@ -374,12 +334,10 @@ $(document).ready(function() {
         dataType: "JSON",
         success: function(data)
         {
-
             if(data.status) //if success close modal and reload ajax table
             {
-                $('#form-release').modal('hide');   
+                $('#form-release').modal('hide');
                 reload_table();
-
                 $.notify({
                   icon:'fa fa-check',
                   message: "Successfully edited!"
@@ -395,24 +353,18 @@ $(document).ready(function() {
                     $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
                 }
             }
-
             $('#btnSave').text('save'); //change button text
             $('#btnSave').attr('disabled',false); //set button enable
-
-
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
             alert('Error adding / update data');
             $('#btnSave').text('save'); //change button text
             $('#btnSave').attr('disabled',false); //set button enable
-
         }
     });
-
     return false;
   });
-
   function delete_asset(id) {
   if(confirm('Are you sure delete this data?'))
   {
@@ -438,7 +390,6 @@ $(document).ready(function() {
               alert('Error deleting data');
           }
       });
-
     }
 }
 </script>

@@ -18,7 +18,7 @@
     <div ><!-- /.box-header -->
       <div class="box-body">
         <div class="row">
-          <div class="container">
+          <div class="col-sm-12">
               <h1 style="font-size:20pt">Condition Datatable</h1>
               <br />
               <button class="btn btn-success" onclick="add_condition()"><i class="glyphicon glyphicon-plus"></i> Add </button>

@@ -20,7 +20,7 @@
     <div ><!-- /.box-header -->
       <div class="box-body">
         <div class="row">
-          <div class="container">
+          <div class="col-sm-12">
               <h3>Release Table</h3>
               <br />
               <br />

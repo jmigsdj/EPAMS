@@ -14,7 +14,6 @@
     </div><!-- box-body -->
     <div ><!-- /.box-header -->
       <div class="box-body">
-        <div class="container">
           <div class="row">
             <div class="col-sm-12">
               <h3>Employees Datatable</h3>
@@ -52,7 +51,6 @@
               <div class="buttons" id="buttons-container"></div>
             </div>
           </div>
-        </div><!-- end of container -->
       </div><!-- box-body -->
     </div>
   </div>
@@ -92,7 +90,7 @@ table = $('#table').DataTable({
             extend: 'excelHtml5',
             text: 'Download as (.xls)'
           }]
-      });  
+      });
       table.buttons().container().appendTo( $('#buttons-container') );
     }
 
