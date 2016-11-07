@@ -66,7 +66,7 @@ class Asset_model extends CI_Model {
 	{
 
 		$this->db->select('assets.*, cat.category_id, cat.category_name, con.condition_id, con.condition_name, s.status_id, s.status_name');
-		$this->db->from('assets');
+		$this->db->from('assets as a');
 		$this->db->join('category cat', 'cat.category_id = assets.category_id', 'left');
 		$this->db->join('condition con', 'con.condition_id = assets.condition_id', 'left');
 		$this->db->join('status s', 's.status_id = assets.status_id', 'left');

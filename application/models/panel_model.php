@@ -62,5 +62,19 @@ class Panel_model extends MY_Model {
 		$row = $fetch->result_array();
 		return $row;
 	}
+
+	public function selecet_history(){
+		// $this->db->select('release.*');
+		$fetch = $this->db->get('history');
+		// $query="SELECT
+		// 	h.*
+		// FROM
+		// 	`history` AS h";
+		// $fetch=$this->db->query($query);
+		$row = $fetch->result_array();
+		return $row;
+	}
+
+	
 }
 ?>

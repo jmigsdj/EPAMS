@@ -25,7 +25,10 @@ class Status extends CI_Controller {
             $row = array();
             $row[] = $status->status_name;
 
-
+            if ($status->status_name == "Returned" || $status->status_name == "Borrowed" || $status->status_name == "Available") {
+              $row[] = '<a class="btn btn-sm btn-primary disabled" href="javascript:void(0)" title="Edit" onclick="edit_status('."'".$status->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                    <a class="btn btn-sm btn-danger disabled" href="javascript:void(0)" title="Delete" onclick="delete_status('."'".$status->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            }
             //add html for action
             $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_status('."'".$status->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
                   <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_status('."'".$status->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';

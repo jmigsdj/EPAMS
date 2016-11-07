@@ -77,7 +77,8 @@ class Panel extends MY_Controller {
 
 	//History
 	public function history(){
-		$this->load->view('content\history');
+		$data['history']=$this->panel_model->selecet_history();
+		$this->load->view('content\history', $data);
 	}
 
 
