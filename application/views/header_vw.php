@@ -18,6 +18,8 @@
 			}
 		</script>
 
+		<!-- jQuery -->
+		<script src="<?=base_url()?>media/js/jquery-1.11.3.js"></script>
 		<!-- DataTables + jQuery 2.2.3 -->
 		<link rel="stylesheet" type="text/css" href="<?=base_url()?>/assets/datatables2/datatables.min.css"/>
 		<script type="text/javascript" src="<?=base_url()?>/assets/datatables2/datatables.min.js"></script>
@@ -54,7 +56,7 @@
 		<link rel="stylesheet" type="text/css" href="<?=base_url()?>/assets/jquery-ui/jquery-ui.min.css"/>
 		<script type="text/javascript" src="<?=base_url()?>/assets/jquery-ui/jquery-ui.min.js"></script>
 
-		
+
 		<script type="text/javascript">
 			$.fn.modal.Constructor.prototype.enforceFocus = function() {};
 		</script>
